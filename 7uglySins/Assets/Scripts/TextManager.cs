@@ -9,6 +9,7 @@ public class TextManager : MonoBehaviour
     public TMP_Text uiText;
 
     public InputAction actionX;
+    public InputAction actionY;
 
 
     static public TextManager instance;
@@ -31,20 +32,29 @@ public class TextManager : MonoBehaviour
     private void OnEnable()
     {
         actionX.performed += OnXPressed;
+        actionY.performed += OnYPressed;
 
         actionX.Enable();
+        actionY.Enable();
     }
 
     private void OnDisable()
     {
         actionX.Disable();
+        actionY.Disable();
         actionX.performed -= OnXPressed;
+        actionY.performed -= OnYPressed;
     }
 
     public void OnXPressed(InputAction.CallbackContext context)
     {
-        Debug.Log("here");
         Dialog Dia = FindDialog("Test");
+        Dia.DisplayDialog();
+    }
+
+    public void OnYPressed(InputAction.CallbackContext context)
+    {
+        Dialog Dia = FindDialog("Test 2");
         Dia.DisplayDialog();
     }
 

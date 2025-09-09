@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextDisplay
   dialogs:
+  - {fileID: 11400000, guid: 2564cbe48e64f0944a987f7d546f7d12, type: 2}
   - {fileID: 11400000, guid: 657c4ad3fba651f47b9764fb397da119, type: 2}
   uiText: {fileID: 1257042114}
   actionX:
@@ -245,6 +246,23 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Action X
+      m_Flags: 0
+    m_Flags: 0
+  actionY:
+    m_Name: Action Y
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a15ee7a2-c02f-45e5-90ed-b2e81294ab56
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 9bb6b600-6110-4312-ad58-fb21d52d9412
+      m_Path: <Keyboard>/enter
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Action Y
       m_Flags: 0
     m_Flags: 0
 --- !u!4 &878752410
