@@ -12,7 +12,7 @@ public class TextBox : ScriptableObject
 
     private string currentText = string.Empty;
 
-    public IEnumerator DisplayText(TMP_Text uiText)
+    public IEnumerator DisplayText(TMP_Text uiText, Dialog dialog = null, int index = 0)
     {
         if (currentText != string.Empty) currentText = string.Empty;
 
@@ -21,6 +21,12 @@ public class TextBox : ScriptableObject
             currentText += textToDisplay[i];
             uiText.text = currentText;
             yield return new WaitForSeconds(delay);
+        }
+
+        if (dialog != null)
+        {
+            yield return new WaitForSeconds(dialog.delay);
+            dialog.DisplayDialog(++index);
         }
     }
 }
