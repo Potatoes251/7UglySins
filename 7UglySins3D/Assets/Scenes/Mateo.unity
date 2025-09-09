@@ -486,6 +486,7 @@ MonoBehaviour:
   character:
   - {fileID: 11400000, guid: eaac9de992893bf4f995b57e4346132a, type: 2}
   - {fileID: 11400000, guid: 5b2063254be339e4bbdb613d51b9b645, type: 2}
+  - {fileID: 11400000, guid: 860570e443fb0bf4b9a6471278c3238a, type: 2}
   clickableID: {fileID: 1891349215}
   id: {fileID: 404864987}
   action:
