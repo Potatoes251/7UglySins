@@ -11,7 +11,6 @@ public class TextManager : MonoBehaviour
     public InputAction actionX;
     public InputAction actionY;
 
-
     static public TextManager instance;
 
     void Start()
@@ -55,7 +54,6 @@ public class TextManager : MonoBehaviour
         StopDialogs();
     }
 
-
     public void DisplayTexts(TextBox text, int index = 0, Dialog dialog = null)
     {
         uiText.gameObject.SetActive(true);
@@ -78,6 +76,7 @@ public class TextManager : MonoBehaviour
                 return dialogs[i];
             }
         }
+        Debug.Log("No dialogs named : " + name);
         return null;
     }
 

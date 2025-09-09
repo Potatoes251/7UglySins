@@ -19,11 +19,24 @@ public class Character : ScriptableObject
         }
     }
 
-    public void Exits()
+    public void Exits(bool goToHell = true)
     {
         if (spawnedObject != null)
         {
-            id.dialogs[1].DisplayDialog();
+            if (id.dialogs.Length < 3)
+            {
+                Debug.LogWarning("Not enough dialogs in : " + id.CharName);
+                return;
+            }
+            if (goToHell)
+            {
+                id.dialogs[2].DisplayDialog();
+            }
+            else
+            {
+                id.dialogs[1].DisplayDialog();
+            }
+
             Destroy(spawnedObject);
         }
     }
