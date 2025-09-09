@@ -7,15 +7,25 @@ public class Character : ScriptableObject
 
     public string[] dialogsName;
 
-    public GameObject model;
+    [SerializeField]
+    private GameObject model;
 
+    private GameObject spawnedObject = null;
 
     public void Enters()
     {
         if (model != null)
         {
-            Instantiate(model, new Vector3(0, 2f, 0), Quaternion.identity);
+            spawnedObject = Instantiate(model, new Vector3(0, 2f, 0), Quaternion.identity);
             TextManager.instance.StartDialogs(dialogsName[0]);
+        }
+    }
+
+    public void Exits()
+    {
+        if (spawnedObject != null)
+        {
+            Destroy(spawnedObject);
         }
     }
 }

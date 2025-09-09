@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Test 2
   m_EditorClassIdentifier: Assembly-CSharp::TextBox
   textToDisplay: another tesy
-  delay: 0.1
+  delay: 0.05

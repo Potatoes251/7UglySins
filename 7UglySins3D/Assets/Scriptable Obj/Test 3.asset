@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
   m_Name: Test 3
   m_EditorClassIdentifier: Assembly-CSharp::TextBox
-  textToDisplay: that a character
+  textToDisplay: thats a character
   delay: 0.05

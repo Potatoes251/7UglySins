@@ -15,5 +15,9 @@ public class Dialog : ScriptableObject
         {
             TextManager.instance.DisplayTexts(boxes[index], index, this);
         }
+        else
+        {
+            TextManager.instance.StopDialogs();
+        }
     }
 }

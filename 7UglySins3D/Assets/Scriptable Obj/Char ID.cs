@@ -7,4 +7,6 @@ public class CharID : ScriptableObject
     public string gender;
     public string causeOfDeath;
     public string request;
+
+    public string[] definingMoments;
 }

@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50ccf39d9ec7004db94c5696af4f24b, type: 3}
   m_Name: CharID
   m_EditorClassIdentifier: Assembly-CSharp::CharID
-  CharName: 
-  gender: 0
-  causeOfDeath: 
-  request: 0
+  CharName: thats a name
+  gender: you
+  causeOfDeath: dying
+  request: sleep
+  definingMoments:
+  - that was epic
+  - 42
+  - idk

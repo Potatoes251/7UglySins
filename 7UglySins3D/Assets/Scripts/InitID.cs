@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class InitID : MonoBehaviour
 {
-    [SerializeField] private CharID id;
+    public CharID id;
 
     [SerializeField] private TMP_Text nameToSet;
     [SerializeField] private TMP_Text genderToSet;
     [SerializeField] private TMP_Text causeToSet;
     [SerializeField] private TMP_Text requestToSet;
+    [SerializeField] private TMP_Text[] momentsToSet;
 
-    void Start()
+    void OnEnable()
     {
         if (id == null)
         {
@@ -23,5 +24,9 @@ public class InitID : MonoBehaviour
         if (genderToSet != null) genderToSet.text = id.gender;
         if (causeToSet != null) causeToSet.text = id.causeOfDeath;
         if (requestToSet != null) requestToSet.text = id.request;
+        for (int i = 0; i < id.definingMoments.Length && i < momentsToSet.Length; i++)
+        {
+            momentsToSet[i].text = id.definingMoments[i];
+        }
     }
 }

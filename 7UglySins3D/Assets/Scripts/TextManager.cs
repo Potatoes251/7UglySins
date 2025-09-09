@@ -53,17 +53,19 @@ public class TextManager : MonoBehaviour
 
     private void OnYPressed(InputAction.CallbackContext context)
     {
-        StartDialogs("Test 2");
+        StopDialogs();
     }
 
 
     public void DisplayTexts(TextBox text, int index = 0, Dialog dialog = null)
     {
+        uiText.gameObject.SetActive(true);
         StartCoroutine(text.DisplayText(uiText, dialog, index));
     }
 
     public void StartDialogs(string name)
     {
+        StopDialogs();
         Dialog Dia = FindDialog(name);
         if (Dia != null) Dia.DisplayDialog();
     }
@@ -78,5 +80,11 @@ public class TextManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void StopDialogs()
+    {
+        StopAllCoroutines();
+        uiText.gameObject.SetActive(false);
     }
 }
