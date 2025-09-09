@@ -10,13 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e50ccf39d9ec7004db94c5696af4f24b, type: 3}
-  m_Name: CharID 1
+  m_Name: CharID
   m_EditorClassIdentifier: Assembly-CSharp::CharID
-  CharName: ban bee
-  gender: none
-  causeOfDeath: still alive
-  request: bed
+  CharName: thats a name
+  gender: you
+  causeOfDeath: dying
+  request: sleep
   definingMoments:
-  - being gay
-  - slept with your mom
-  - i have no idea so im just putting smth in here
+  - text: bbhjke
+    isSinful: 0
+  - text: moment
+    isSinful: 0
+  - text: text
+    isSinful: 0
+  dialogs:
+  - {fileID: 11400000, guid: 657c4ad3fba651f47b9764fb397da119, type: 2}
+  - {fileID: 11400000, guid: 28575e7585c9b834c8cde326d4de1145, type: 2}

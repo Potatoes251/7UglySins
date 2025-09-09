@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: Character 1
   m_EditorClassIdentifier: Assembly-CSharp::Character
   id: {fileID: 11400000, guid: 27d6c9c8b9175244eb01930a73822771, type: 2}
-  dialogsName:
-  - Entrance char 1
   model: {fileID: 6848637618354301566, guid: 0b693cff7296e2e4780a55ce33d06b3f, type: 3}

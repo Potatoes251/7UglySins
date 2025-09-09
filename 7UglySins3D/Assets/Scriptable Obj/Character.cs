@@ -5,8 +5,6 @@ public class Character : ScriptableObject
 {
     public CharID id;
 
-    public string[] dialogsName;
-
     [SerializeField]
     private GameObject model;
 
@@ -17,7 +15,7 @@ public class Character : ScriptableObject
         if (model != null)
         {
             spawnedObject = Instantiate(model, new Vector3(0, 2f, 0), Quaternion.identity);
-            TextManager.instance.StartDialogs(dialogsName[0]);
+            id.dialogs[0].DisplayDialog();
         }
     }
 
@@ -25,6 +23,7 @@ public class Character : ScriptableObject
     {
         if (spawnedObject != null)
         {
+            id.dialogs[1].DisplayDialog();
             Destroy(spawnedObject);
         }
     }

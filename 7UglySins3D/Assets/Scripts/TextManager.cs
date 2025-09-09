@@ -25,8 +25,7 @@ public class TextManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        Dialog Dia = FindDialog("Test");
-        Dia.DisplayDialog();
+        StartDialogs("Test");
     }
 
     private void OnEnable()

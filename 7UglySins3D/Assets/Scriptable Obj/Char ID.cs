@@ -3,10 +3,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharID", menuName = "Scriptable Objects/CharID")]
 public class CharID : ScriptableObject
 {
+    [System.Serializable]
+    public struct Moments
+    {
+        public string text;
+        public bool isSinful;
+    }
+
     public string CharName;
     public string gender;
     public string causeOfDeath;
-    public string request;
+    public string occupation;
 
-    public string[] definingMoments;
+    public Moments[] definingMoments;
+
+    public Dialog[] dialogs;
 }

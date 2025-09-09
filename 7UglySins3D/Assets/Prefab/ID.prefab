@@ -337,7 +337,7 @@ MonoBehaviour:
   nameToSet: {fileID: 6065801661370162947}
   genderToSet: {fileID: 2993378887842198940}
   causeToSet: {fileID: 1928182725100000061}
-  requestToSet: {fileID: 3723008905872178887}
+  occupationToSet: {fileID: 3723008905872178887}
   momentsToSet:
   - {fileID: 5939762748848703334}
   - {fileID: 7673170383723257261}
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 1203957768621016298}
   - component: {fileID: 3723008905872178887}
   m_Layer: 5
-  m_Name: RequestToSet
+  m_Name: OccupationToSet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,7 +407,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: request
+  m_text: 'Occupation
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -973,7 +975,7 @@ GameObject:
   - component: {fileID: 1644630305849253871}
   - component: {fileID: 1896681538896331485}
   m_Layer: 5
-  m_Name: Request
+  m_Name: Occupation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1026,7 +1028,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Afterlife requested
+  m_text: 'Occupation
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
