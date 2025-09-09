@@ -6,9 +6,11 @@ using System.Collections;
 public class TextBox : ScriptableObject
 {
     [TextArea(5, 10)]
-    public string textToDisplay;
+    [SerializeField]
+    private string textToDisplay;
 
-    public float delay = 0.05f;
+    [SerializeField]
+    private float delay = 0.05f;
 
     private string currentText = string.Empty;
 

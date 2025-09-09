@@ -46,22 +46,26 @@ public class TextManager : MonoBehaviour
         actionY.performed -= OnYPressed;
     }
 
-    public void OnXPressed(InputAction.CallbackContext context)
+    private void OnXPressed(InputAction.CallbackContext context)
     {
-        Dialog Dia = FindDialog("Test");
-        Dia.DisplayDialog();
+        StartDialogs("Test");
     }
 
-    public void OnYPressed(InputAction.CallbackContext context)
+    private void OnYPressed(InputAction.CallbackContext context)
     {
-        Dialog Dia = FindDialog("Test 2");
-        Dia.DisplayDialog();
+        StartDialogs("Test 2");
     }
 
 
     public void DisplayTexts(TextBox text, int index = 0, Dialog dialog = null)
     {
         StartCoroutine(text.DisplayText(uiText, dialog, index));
+    }
+
+    public void StartDialogs(string name)
+    {
+        Dialog Dia = FindDialog(name);
+        if (Dia != null) Dia.DisplayDialog();
     }
 
     public Dialog FindDialog(string name)
