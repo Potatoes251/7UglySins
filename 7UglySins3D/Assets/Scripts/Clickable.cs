@@ -1,11 +1,13 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class IDdisplay : MonoBehaviour
+public class Clickable : MonoBehaviour
 {
-    [SerializeField] private GameObject id;
+    public GameObject objectToToggle;
 
-    [SerializeField] private InputAction clickAction;
+    [SerializeField] 
+    private InputAction clickAction;
 
     private void OnEnable()
     {
@@ -26,11 +28,10 @@ public class IDdisplay : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit)) // 3D version
         {
-            if (hit.collider.CompareTag("id"))
+            if (hit.collider.gameObject == this.gameObject)
             {
-                id.SetActive(!id.activeSelf);
+                objectToToggle.SetActive(!objectToToggle.activeSelf);
             }
         }
-        
     }
 }

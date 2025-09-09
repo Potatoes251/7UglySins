@@ -1,11 +1,20 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class CharacterManager : MonoBehaviour
 {
     public Character[] character;
 
+    public GameObject clickableID;
+    public InitID id;
+
     public InputAction action;
+
+    private int currentChar = 0;
+
+    private bool isCharacterPresent = false;
 
     private void OnEnable()
     {
@@ -22,6 +31,26 @@ public class CharacterManager : MonoBehaviour
 
     public void OnActionPressed(InputAction.CallbackContext context)
     {
-        character[0].Enters();
+        if (isCharacterPresent)
+        {
+            character[currentChar].Exits();
+            ++currentChar;
+
+            if (currentChar >= character.Length)
+            {
+                currentChar = 0;
+            }
+        }
+        else
+        {
+            character[currentChar].Enters();
+        }
+        isCharacterPresent = !isCharacterPresent;
+
+        if (clickableID != null)
+        {
+            clickableID.SetActive(isCharacterPresent);
+            id.id = character[currentChar].id;
+        }
     }
 }

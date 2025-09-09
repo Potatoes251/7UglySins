@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbfc7ea5df56c44bb1a9604011bea66, type: 3}
   m_Name: Dialog 2
   m_EditorClassIdentifier: Assembly-CSharp::Dialog
-  dialogName: Entrance char 1
+  dialogName: Start
   boxes:
   - {fileID: 11400000, guid: 4b224598e312f594486615fc8ff693c8, type: 2}
   delay: 1

@@ -10,7 +10,7 @@ public class TextBox : ScriptableObject
     private string textToDisplay;
 
     [SerializeField]
-    private float delay = 0.05f;
+    private float speed = 0.05f;
 
     private string currentText = string.Empty;
 
@@ -22,7 +22,7 @@ public class TextBox : ScriptableObject
         {
             currentText += textToDisplay[i];
             uiText.text = currentText;
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(speed);
         }
 
         if (dialog != null)
