@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 1264224093}
   - component: {fileID: 1264224092}
   m_Layer: 0
-  m_Name: charManager
+  m_Name: Characters Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -692,9 +692,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a80b898782322d438e57497c8894a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
-  character: []
+  character:
+  - {fileID: 11400000, guid: eaac9de992893bf4f995b57e4346132a, type: 2}
   clickableID: {fileID: 355723564}
-  id: {fileID: 0}
+  id: {fileID: 1728399909}
   action:
     m_Name: Action
     m_Type: 0
@@ -1053,6 +1054,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 599427343253114847, guid: 6aa826cdad87c704ab23dc14c55f3679, type: 3}
   m_PrefabInstance: {fileID: 1728399906}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1728399909 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8113443103766080621, guid: 6aa826cdad87c704ab23dc14c55f3679, type: 3}
+  m_PrefabInstance: {fileID: 1728399906}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728399907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222c98a411ba763458256e09a20d7035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
