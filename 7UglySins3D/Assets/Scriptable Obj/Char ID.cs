@@ -8,6 +8,7 @@ public class CharID : ScriptableObject
     {
         public string text;
         public bool isSinful;
+        public bool isMoral;
     }
 
     public string CharName;
