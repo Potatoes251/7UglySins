@@ -25,8 +25,7 @@ public class TextManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        Dialog Dia = FindDialog("Test");
-        Dia.DisplayDialog();
+        StartDialogs("Test");
     }
 
     private void OnEnable()
@@ -46,22 +45,28 @@ public class TextManager : MonoBehaviour
         actionY.performed -= OnYPressed;
     }
 
-    public void OnXPressed(InputAction.CallbackContext context)
+    private void OnXPressed(InputAction.CallbackContext context)
     {
-        Dialog Dia = FindDialog("Test");
-        Dia.DisplayDialog();
+        StartDialogs("Test");
     }
 
-    public void OnYPressed(InputAction.CallbackContext context)
+    private void OnYPressed(InputAction.CallbackContext context)
     {
-        Dialog Dia = FindDialog("Test 2");
-        Dia.DisplayDialog();
+        StopDialogs();
     }
 
 
     public void DisplayTexts(TextBox text, int index = 0, Dialog dialog = null)
     {
+        uiText.gameObject.SetActive(true);
         StartCoroutine(text.DisplayText(uiText, dialog, index));
+    }
+
+    public void StartDialogs(string name)
+    {
+        StopDialogs();
+        Dialog Dia = FindDialog(name);
+        if (Dia != null) Dia.DisplayDialog();
     }
 
     public Dialog FindDialog(string name)
@@ -74,5 +79,11 @@ public class TextManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void StopDialogs()
+    {
+        StopAllCoroutines();
+        uiText.gameObject.SetActive(false);
     }
 }

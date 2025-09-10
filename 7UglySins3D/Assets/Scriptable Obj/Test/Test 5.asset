@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dbfc7ea5df56c44bb1a9604011bea66, type: 3}
-  m_Name: Dialog 2
-  m_EditorClassIdentifier: Assembly-CSharp::Dialog
-  dialogName: Test 2
-  boxes:
-  - {fileID: 11400000, guid: 4b224598e312f594486615fc8ff693c8, type: 2}
-  delay: 1
+  m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
+  m_Name: Test 5
+  m_EditorClassIdentifier: Assembly-CSharp::TextBox
+  textToDisplay: fuck you
+  delay: 0.2

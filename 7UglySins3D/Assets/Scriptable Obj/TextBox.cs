@@ -6,9 +6,11 @@ using System.Collections;
 public class TextBox : ScriptableObject
 {
     [TextArea(5, 10)]
-    public string textToDisplay;
+    [SerializeField]
+    private string textToDisplay;
 
-    public float delay = 0.05f;
+    [SerializeField]
+    private float speed = 0.05f;
 
     private string currentText = string.Empty;
 
@@ -20,7 +22,7 @@ public class TextBox : ScriptableObject
         {
             currentText += textToDisplay[i];
             uiText.text = currentText;
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(speed);
         }
 
         if (dialog != null)

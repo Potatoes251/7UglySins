@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50ccf39d9ec7004db94c5696af4f24b, type: 3}
+  m_Name: VictorID
+  m_EditorClassIdentifier: Assembly-CSharp::CharID
+  CharName: Victor Rious
+  gender: Male
+  causeOfDeath: Gunfire
+  occupation: War Veteran
+  definingMoments: []
+  dialogs:
+  - {fileID: 11400000, guid: f2bd384c68fce174090eecdf723691ca, type: 2}
+  - {fileID: 11400000, guid: 5001de674ea9c7349a00d4fc712f59a8, type: 2}
+  - {fileID: 11400000, guid: 05dd3b5f5114ac448ba60e7cfeb6cea2, type: 2}
