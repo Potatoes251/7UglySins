@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50ccf39d9ec7004db94c5696af4f24b, type: 3}
+  m_Name: OscarID
+  m_EditorClassIdentifier: Assembly-CSharp::CharID
+  CharName: Oscar Graves
+  gender: Male
+  causeOfDeath: Spontaneous Combustion
+  occupation: Cult Janitorial
+  definingMoments:
+  - text: Pretending to do their job
+    isSinful: 1
+    isMoral: 0
+  - text: Having stabbed someone
+    isSinful: 1
+    isMoral: 1
+  - text: Repairing their friends cars
+    isSinful: 0
+    isMoral: 1
+  - text: Attempting Demonic Rituals
+    isSinful: 1
+    isMoral: 0
+  - text: Having cleaned a large mess
+    isSinful: 0
+    isMoral: 0
+  dialogs:
+  - {fileID: 11400000, guid: 6e79ffcbb4859eb46800fb324f6e549e, type: 2}
+  - {fileID: 11400000, guid: 9501e17c05f97934bbe553cb308a892f, type: 2}
+  - {fileID: 11400000, guid: 7427b0eb153dba542a7761cfcdf6effa, type: 2}

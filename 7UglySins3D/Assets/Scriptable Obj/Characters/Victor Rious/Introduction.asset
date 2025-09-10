@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dbfc7ea5df56c44bb1a9604011bea66, type: 3}
+  m_Name: Introduction
+  m_EditorClassIdentifier: Assembly-CSharp::Dialog
+  dialogName: Introduction Reaction
+  boxes:
+  - {fileID: 11400000, guid: 09479aed5c3d3bb44bf8e577e34e6a93, type: 2}
+  - {fileID: 11400000, guid: 2e4b5da1635ada34794a2032339e2f65, type: 2}
+  - {fileID: 11400000, guid: 9da34a4c9532cd642a0a35ccd5d864c8, type: 2}
+  - {fileID: 11400000, guid: 5d0065fae670fe7459ba2683dc32a8fb, type: 2}
+  - {fileID: 11400000, guid: a35b84c87aa956343937e30414fe7eec, type: 2}
+  delay: 0.05

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50ccf39d9ec7004db94c5696af4f24b, type: 3}
+  m_Name: DerickID
+  m_EditorClassIdentifier: Assembly-CSharp::CharID
+  CharName: Derick Daemons
+  gender: Male
+  causeOfDeath: Critically Failed Breathing
+  occupation: Unemployed
+  definingMoments:
+  - text: Usage of Rigged Dice
+    isSinful: 1
+    isMoral: 0
+  - text: Creating a False God
+    isSinful: 1
+    isMoral: 0
+  - text: Holding the Door for Elderly
+    isSinful: 0
+    isMoral: 1
+  - text: Buying lunch for friends every Sunday
+    isSinful: 0
+    isMoral: 1
+  - text: Telling their boss to "invest into charisma"
+    isSinful: 1
+    isMoral: 1
+  dialogs:
+  - {fileID: 11400000, guid: 7ae4eecb92cbf3143bb687fabccd0691, type: 2}
+  - {fileID: 11400000, guid: 69ec61f9d7d00b9438583da5d0a1e434, type: 2}
+  - {fileID: 11400000, guid: 6add688c6029bd54d8347cb095e6b15d, type: 2}
