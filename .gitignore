@@ -18,6 +18,7 @@ ExportedObj/
 *.unityproj
 *.booproj
 *.svd
+*.sln
 
 # Unity3D generated file
 *.unitypackage
