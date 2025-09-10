@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
   m_Name: Test 5
   m_EditorClassIdentifier: Assembly-CSharp::TextBox
-  textToDisplay: fuck you
-  delay: 0.2
+  textToDisplay: ' aaaaaaaaaaaaaaaahhhhhhhhhhhhhh!!!!!!!!!'
+  speed: 0.05
