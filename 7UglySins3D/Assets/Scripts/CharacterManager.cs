@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,8 +11,6 @@ public class CharacterManager : MonoBehaviour
     public GameObject clickableID;
     public InitID id;
 
-    public InputAction action;
-
     private int currentChar = 0;
 
     private bool isCharacterPresent = false;
@@ -19,20 +18,15 @@ public class CharacterManager : MonoBehaviour
     [SerializeField]
     private WheightManager spawner = null;
 
+    [SerializeField]
+    private Transform spawnPoint;
+
     private void OnEnable()
     {
-        action.performed += OnActionPressed;
-
-        action.Enable();
+        EventManager.StartListening(GameEvent.NewCharacter, SwitchCharacter);
     }
 
-    private void OnDisable()
-    {
-        action.Disable();
-        action.performed -= OnActionPressed;
-    }
-
-    public void OnActionPressed(InputAction.CallbackContext context)
+    public void SwitchCharacter(Dictionary<string, object> data)
     {
         if (isCharacterPresent)
         {
@@ -46,7 +40,7 @@ public class CharacterManager : MonoBehaviour
         }
         else
         {
-            character[currentChar].Enters(spawner);
+            character[currentChar].Enters(spawnPoint, spawner);
         }
         isCharacterPresent = !isCharacterPresent;
 

@@ -21,9 +21,6 @@ public class GameManager : MonoBehaviour
     // Singleton Instance
     public static GameManager Instance { get; private set; }
 
-    [Header("Game Settings")]
-    [SerializeField] public List<Character> characters = new List<Character>();
-
     [Header("State Tracking")]
     [SerializeField] private GameState game_state = GameState.Entry;
 
@@ -82,8 +79,55 @@ public class GameManager : MonoBehaviour
 
     public void UpdateState(GameState targetState)
     {
-        game_state = targetState;
+ 
         Debug.Log("Game State Updated: " + game_state);
+
+        switch (game_state)
+        {
+            case GameState.Entry:
+                SwitchFromEntry(targetState);
+                break;
+
+            case GameState.Start:
+                break;
+
+            case GameState.Paused:
+                break;
+
+            case GameState.GameStart:
+                break;
+
+            case GameState.Running:
+                break;
+
+            default:
+                Debug.LogWarning("Unhandled GameState: " + game_state);
+                break;
+        }
+        game_state = targetState;
+    }
+
+    private void SwitchFromEntry(GameState targetState)
+    {
+        switch (targetState)
+        {
+            case GameState.Entry:
+                Debug.LogWarning("switching state from entry to entry");
+                break;
+            case GameState.Start:
+                Debug.Log("starting from entry");
+                EventManager.TriggerEvent(GameEvent.NewCharacter, new Dictionary<string, object> { });
+                break;
+
+            case GameState.Paused:
+                break;
+
+            case GameState.GameStart:
+                break;
+
+            case GameState.Running:
+                break;
+        }
     }
 
     private void OnEnable()

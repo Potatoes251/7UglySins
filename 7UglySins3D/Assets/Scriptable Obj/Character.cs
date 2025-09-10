@@ -10,7 +10,7 @@ public class Character : ScriptableObject
 
     private GameObject spawnedObject = null;
 
-    public void Enters(WheightManager spawner = null)
+    public void Enters(Transform spawnPoint, WheightManager spawner = null)
     {
         if (model != null)
         {
@@ -18,7 +18,7 @@ public class Character : ScriptableObject
             {
                 spawner.SpawnWheight(CountSin());
             }
-            spawnedObject = Instantiate(model, new Vector3(0, 2f, 0), Quaternion.identity);
+            spawnedObject = Instantiate(model, spawnPoint);
             id.dialogs[0].DisplayDialog();
         }
     }
@@ -41,6 +41,7 @@ public class Character : ScriptableObject
             if (id.dialogs.Length < 3)
             {
                 Debug.LogWarning("Not enough dialogs in : " + id.CharName);
+                Destroy(spawnedObject);
                 return;
             }
             if (goToHell)

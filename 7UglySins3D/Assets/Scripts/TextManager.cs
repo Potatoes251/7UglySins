@@ -24,7 +24,7 @@ public class TextManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        StartDialogs("Test");
+        //StartDialogs("Test");
     }
 
     private void OnEnable()

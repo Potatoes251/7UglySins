@@ -6,7 +6,9 @@ using UnityEngine;
 /// 
 public enum GameEvent
 {
-    ClickedStart
+    ClickedStart,
+    NewCharacter
+
 }
 
 [DefaultExecutionOrder(-10000)]
