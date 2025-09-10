@@ -15,14 +15,17 @@ MonoBehaviour:
   CharName: thats a name
   gender: you
   causeOfDeath: dying
-  request: sleep
+  occupation: something something something
   definingMoments:
   - text: bbhjke
-    isSinful: 0
+    isSinful: 1
+    isMoral: 0
   - text: moment
     isSinful: 0
+    isMoral: 0
   - text: text
     isSinful: 0
+    isMoral: 0
   dialogs:
   - {fileID: 11400000, guid: 657c4ad3fba651f47b9764fb397da119, type: 2}
   - {fileID: 11400000, guid: 28575e7585c9b834c8cde326d4de1145, type: 2}

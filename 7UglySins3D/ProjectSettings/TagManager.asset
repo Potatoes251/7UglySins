@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - PlayArea
+  - id
+  - Weight
+  - Button
   layers:
   - Default
   - TransparentFX

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3dbfc7ea5df56c44bb1a9604011bea66, type: 3}
-  m_Name: Dialog
+  m_Name: Ending 1
   m_EditorClassIdentifier: Assembly-CSharp::Dialog
-  dialogName: staarts
+  dialogName: 
   boxes:
-  - {fileID: 11400000, guid: 844832b7aad6bb74b942359128b3c633, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   delay: 0.05
