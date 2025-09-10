@@ -16,22 +16,12 @@ public class Character : ScriptableObject
         {
             if(spawner != null)
             {
-                spawner.SpawnWheight(CountSin());
+                Debug.Log("enters");
+                spawner.SpawnWheight(id);
             }
             spawnedObject = Instantiate(model, spawnPoint);
             id.dialogs[0].DisplayDialog();
         }
-    }
-
-    public bool[] CountSin()
-    {
-        bool[] sin = new bool[id.definingMoments.Length];
-
-        for (int i = 0; i < id.definingMoments.Length; ++i)
-        {
-            sin[i] = id.definingMoments[i].isSinful;
-        }
-        return sin;
     }
 
     public void Exits(bool goToHell = true)

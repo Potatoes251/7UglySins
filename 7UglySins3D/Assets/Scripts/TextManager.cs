@@ -2,14 +2,12 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using UnityEditor.Experimental.GraphView;
+using System.Collections.Generic;
 
 public class TextManager : MonoBehaviour
 {
     public Dialog[] dialogs;
     public TMP_Text uiText;
-
-    public InputAction actionX;
-    public InputAction actionY;
 
     static public TextManager instance;
 
@@ -24,34 +22,17 @@ public class TextManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        //StartDialogs("Test");
     }
 
     private void OnEnable()
     {
-        actionX.performed += OnXPressed;
-        actionY.performed += OnYPressed;
-
-        actionX.Enable();
-        actionY.Enable();
+        EventManager.StartListening(GameEvent.Ending, Ending);
     }
 
-    private void OnDisable()
+    private void Ending(Dictionary<string, object> data)
     {
-        actionX.Disable();
-        actionY.Disable();
-        actionX.performed -= OnXPressed;
-        actionY.performed -= OnYPressed;
-    }
-
-    private void OnXPressed(InputAction.CallbackContext context)
-    {
-        StartDialogs("Test");
-    }
-
-    private void OnYPressed(InputAction.CallbackContext context)
-    {
-        StopDialogs();
+        Debug.Log("Ending is : " + (string)data["Ending"]);
+        //StartDialogs((string)data["Ending"]);
     }
 
     public void DisplayTexts(TextBox text, int index = 0, Dialog dialog = null)

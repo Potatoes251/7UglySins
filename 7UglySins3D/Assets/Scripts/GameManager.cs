@@ -12,8 +12,9 @@ public enum GameState
 
 public struct GameData
 {
-    int obedience;
-    int morality;
+    public int obedience;
+    public int morality;
+    public int nbHell;
 }
 
 public class GameManager : MonoBehaviour
@@ -23,6 +24,11 @@ public class GameManager : MonoBehaviour
 
     [Header("State Tracking")]
     [SerializeField] private GameState game_state = GameState.Entry;
+
+    private GameData gameData;
+
+    [SerializeField]
+    private int obedienceEndingThreshold = 5;
 
     private void Awake()
     {
@@ -134,6 +140,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameManager Enabled");
         EventManager.StartListening(GameEvent.ClickedStart, GameStart);
+        EventManager.StartListening(GameEvent.Sentencing, Sentencing);
+        EventManager.StartListening(GameEvent.LastCharacter, PickEnding);
     }
 
     private void OnDisable()
@@ -148,5 +156,43 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameManager Function Triggered");
         if (data.ContainsKey("message"))
             Debug.Log((string)data["message"]);
+    }
+
+    private void Sentencing(Dictionary<string, object> data)
+    {
+        Debug.Log("Sentencing : obedience : " + (int)data["obedience"] + " morality" + (int)data["morality"]);
+        gameData.obedience += (int)data["obedience"];
+        gameData.morality += (int)data["morality"];
+        if ((bool)data["goToHell"])
+        {
+            gameData.nbHell++;
+        }
+    }
+
+    private void PickEnding(Dictionary<string, object> data) 
+    {
+        Debug.Log("obedience" + gameData.obedience);
+        Debug.Log("morality" + gameData.morality);
+        if (gameData.obedience > obedienceEndingThreshold)
+        {
+            EventManager.TriggerEvent(GameEvent.Ending, new Dictionary<string, object> { { "Ending", "obedience" } });
+            return;
+        }
+        else if (gameData.obedience < -obedienceEndingThreshold)
+        {
+            EventManager.TriggerEvent(GameEvent.Ending, new Dictionary<string, object> { { "Ending", "disobedience" } });
+            return;
+        }
+        else if (gameData.morality < 0)
+        {
+            EventManager.TriggerEvent(GameEvent.Ending, new Dictionary<string, object> { { "Ending", "moral" } });
+            return;
+        }
+        else
+        {
+            EventManager.TriggerEvent(GameEvent.Ending, new Dictionary<string, object> { { "Ending", "immoral" } });
+            return;
+        }
+
     }
 }

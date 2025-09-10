@@ -24,18 +24,21 @@ public class CharacterManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.StartListening(GameEvent.NewCharacter, SwitchCharacter);
+        EventManager.StartListening(GameEvent.Sentencing, SwitchCharacter);
     }
 
     public void SwitchCharacter(Dictionary<string, object> data)
     {
         if (isCharacterPresent)
         {
-            character[currentChar].Exits();
+            Debug.Log("goToHell :" + (bool)data["goToHell"]);
+            character[currentChar].Exits((bool)data["goToHell"]);
             ++currentChar;
 
             if (currentChar >= character.Length)
             {
                 currentChar = 0;
+                EventManager.TriggerEvent(GameEvent.LastCharacter, new Dictionary<string, object> { });
             }
         }
         else

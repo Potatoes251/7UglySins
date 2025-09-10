@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WheightManager : MonoBehaviour
@@ -13,20 +14,18 @@ public class WheightManager : MonoBehaviour
 
     private GameObject[] weights = new GameObject[5];
 
-    public void SpawnWheight(bool[] hellWheight)
+    private Color[] colors = new Color[] { Color.black , Color.white, Color.aliceBlue, Color.beige, Color.purple };
+
+    public void SpawnWheight(CharID id)
     {
         if (weightPrefab == null)
         {
-            Debug.LogWarning("Missing wheight prefab in wheight manager");
+            Debug.LogWarning("Missing weight prefab in wheight manager");
             return;
         }
-        if (weights.Length > 0)
+        for (int i = 0; i < id.definingMoments.Length; i++)
         {
-            DeleteWheight();
-        }
-        for (int i = 0; i < hellWheight.Length; i++)
-        {
-            if (hellWheight[i])
+            if (id.definingMoments[i].isSinful)
             {
                 weights[i] = Instantiate(weightPrefab, hellSpawner);
             }
@@ -34,14 +33,37 @@ public class WheightManager : MonoBehaviour
             {
                 weights[i] = Instantiate(weightPrefab, heavenSpawner);
             }
+            weights[i].GetComponent<Weight>().index = i;
+            weights[i].GetComponent<Weight>().isSinful = id.definingMoments[i].isSinful;
+            weights[i].GetComponent<Weight>().isMoral = id.definingMoments[i].isMoral;
+            weights[i].GetComponentInChildren<Renderer>().material.color = colors[i];
         }
     }
 
-    public void DeleteWheight()
+    private void OnEnable()
+    {
+        EventManager.StartListening(GameEvent.GoNext, DeleteWheight);
+    }
+
+    public void DeleteWheight(Dictionary<string, object> data)
     {
         for (int i = 0; i < weights.Length; i++)
         { 
             Destroy(weights[i]);
+        }
+    }
+
+    public void ResetWeight(int index)
+    {
+        if (weights[index].GetComponent<Weight>().isSinful)
+        {
+            weights[index].transform.position = hellSpawner.position;
+            weights[index].transform.rotation = hellSpawner.rotation;
+        }
+        else
+        {
+            weights[index].transform.position = heavenSpawner.position;
+            weights[index].transform.rotation = heavenSpawner.rotation;
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     [SerializeField]
-    private Button startButton;
+    private GameObject startButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,7 +24,7 @@ public class UiManager : MonoBehaviour
        
     }
 
-    public void ClickedStart()
+    public void ClickedStart()  
     {
         string message = "fuck";
         Debug.Log("clicked");
