@@ -1,8 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject startButton;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,11 +24,15 @@ public class UiManager : MonoBehaviour
        
     }
 
-    public void ClickedStart()
+    public void ClickedStart()  
     {
         string message = "fuck";
         Debug.Log("clicked");
         EventManager.TriggerEvent(GameEvent.ClickedStart, new Dictionary<string, object> { { "message", message } });
+        if (startButton != null)
+        {
+            startButton.gameObject.SetActive(false);
+        }
     }
 
 }

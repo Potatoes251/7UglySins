@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Character 2
   m_EditorClassIdentifier: Assembly-CSharp::Character
   id: {fileID: 11400000, guid: 01e9d7fb7fdcc6a48aa5123d1a7c0858, type: 2}
-  model: {fileID: 6848637618354301566, guid: 0b693cff7296e2e4780a55ce33d06b3f, type: 3}
+  model: {fileID: 919132149155446097, guid: 2bf795babdbd63140aeec484d95b897b, type: 3}
