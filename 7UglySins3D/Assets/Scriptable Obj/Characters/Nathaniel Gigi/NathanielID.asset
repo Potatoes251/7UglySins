@@ -12,9 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50ccf39d9ec7004db94c5696af4f24b, type: 3}
   m_Name: NathanielID
   m_EditorClassIdentifier: Assembly-CSharp::CharID
-  CharName: 
-  gender: 
-  causeOfDeath: 
-  occupation: 
-  definingMoments: []
-  dialogs: []
+  CharName: Nathaniel Gigi
+  gender: Male
+  causeOfDeath: 32 Cranial Bullet Wounds
+  occupation: '"Pro Gamer"'
+  definingMoments:
+  - text: Unironic Usage of "Skibidi"
+    isSinful: 1
+    isMoral: 0
+  - text: The Online Harassment of Women
+    isSinful: 0
+    isMoral: 0
+  - text: Refusing to make payments
+    isSinful: 1
+    isMoral: 0
+  - text: Always showing up to detention
+    isSinful: 0
+    isMoral: 1
+  - text: Aiding their mother use her phone
+    isSinful: 0
+    isMoral: 1
+  dialogs:
+  - {fileID: 11400000, guid: ee5cd883cf7c62b4fa30cf1be7daf3bd, type: 2}
+  - {fileID: 11400000, guid: ed539565c9b63f2469fcb9bda1dcd35b, type: 2}
+  - {fileID: 11400000, guid: 74178bf4007bb6f40b901d2de8e39bfb, type: 2}
