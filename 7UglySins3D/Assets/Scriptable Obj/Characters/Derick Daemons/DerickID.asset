@@ -16,7 +16,22 @@ MonoBehaviour:
   gender: Male
   causeOfDeath: Critically Failed Breathing
   occupation: Unemployed
-  definingMoments: []
+  definingMoments:
+  - text: Usage of Rigged Dice
+    isSinful: 1
+    isMoral: 0
+  - text: Creating a False God
+    isSinful: 1
+    isMoral: 0
+  - text: Holding the Door for Elderly
+    isSinful: 0
+    isMoral: 1
+  - text: Buying lunch for friends every Sunday
+    isSinful: 0
+    isMoral: 1
+  - text: Telling their boss to "invest into charisma"
+    isSinful: 1
+    isMoral: 1
   dialogs:
   - {fileID: 11400000, guid: 7ae4eecb92cbf3143bb687fabccd0691, type: 2}
   - {fileID: 11400000, guid: 69ec61f9d7d00b9438583da5d0a1e434, type: 2}

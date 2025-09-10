@@ -16,7 +16,22 @@ MonoBehaviour:
   gender: Male
   causeOfDeath: Spontaneous Combustion
   occupation: Cult Janitorial
-  definingMoments: []
+  definingMoments:
+  - text: Pretending to do their job
+    isSinful: 1
+    isMoral: 0
+  - text: Having stabbed someone
+    isSinful: 1
+    isMoral: 1
+  - text: Repairing their friends cars
+    isSinful: 0
+    isMoral: 1
+  - text: Attempting Demonic Rituals
+    isSinful: 1
+    isMoral: 0
+  - text: Having cleaned a large mess
+    isSinful: 0
+    isMoral: 0
   dialogs:
   - {fileID: 11400000, guid: 6e79ffcbb4859eb46800fb324f6e549e, type: 2}
   - {fileID: 11400000, guid: 9501e17c05f97934bbe553cb308a892f, type: 2}
