@@ -16,6 +16,9 @@ public class CharacterManager : MonoBehaviour
 
     private bool isCharacterPresent = false;
 
+    [SerializeField]
+    private WheightManager spawner = null;
+
     private void OnEnable()
     {
         action.performed += OnActionPressed;
@@ -43,7 +46,7 @@ public class CharacterManager : MonoBehaviour
         }
         else
         {
-            character[currentChar].Enters();
+            character[currentChar].Enters(spawner);
         }
         isCharacterPresent = !isCharacterPresent;
 

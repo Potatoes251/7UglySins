@@ -15,14 +15,17 @@ MonoBehaviour:
   CharName: ban bee
   gender: none
   causeOfDeath: still alive
-  request: bed
+  occupation: vzebive
   definingMoments:
-  - text: 
+  - text: fuck you bitch
     isSinful: 0
-  - text: 
-    isSinful: 0
-  - text: 
-    isSinful: 0
+    isMoral: 0
+  - text: varnjpovanuovanio^vaf
+    isSinful: 1
+    isMoral: 0
+  - text: bnjgbsi^no
+    isSinful: 1
+    isMoral: 0
   dialogs:
   - {fileID: 11400000, guid: 7363d43098fad7149ad3f8a0be4a81b4, type: 2}
   - {fileID: 11400000, guid: 92ceca6bb1607ba44afc53b2e4d35c6f, type: 2}

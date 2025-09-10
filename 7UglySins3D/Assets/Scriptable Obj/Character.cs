@@ -10,13 +10,28 @@ public class Character : ScriptableObject
 
     private GameObject spawnedObject = null;
 
-    public void Enters()
+    public void Enters(WheightManager spawner = null)
     {
         if (model != null)
         {
+            if(spawner != null)
+            {
+                spawner.SpawnWheight(CountSin());
+            }
             spawnedObject = Instantiate(model, new Vector3(0, 2f, 0), Quaternion.identity);
             id.dialogs[0].DisplayDialog();
         }
+    }
+
+    public bool[] CountSin()
+    {
+        bool[] sin = new bool[id.definingMoments.Length];
+
+        for (int i = 0; i < id.definingMoments.Length; ++i)
+        {
+            sin[i] = id.definingMoments[i].isSinful;
+        }
+        return sin;
     }
 
     public void Exits(bool goToHell = true)
