@@ -32,6 +32,11 @@ public class ScaleSide : MonoBehaviour
         }
     }
 
+    public void ResetScale()
+    {
+        count = 0;
+    }
+
     public WeightData GetWeightData()
     {
         WeightData data = new WeightData();

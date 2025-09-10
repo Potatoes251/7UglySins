@@ -54,5 +54,8 @@ public class Scale : MonoBehaviour
         }
         EventManager.TriggerEvent(GameEvent.Sentencing, new Dictionary<string, object> { 
             {"obedience", obedience },{ "morality", morality }, { "goToHell", goToHell } });
+
+        hell.ResetScale();
+        heaven.ResetScale();
     }
 }

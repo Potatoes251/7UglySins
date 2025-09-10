@@ -25,17 +25,20 @@ public class WheightManager : MonoBehaviour
         }
         for (int i = 0; i < id.definingMoments.Length; i++)
         {
-            if (id.definingMoments[i].isSinful)
-            {
-                weights[i] = Instantiate(weightPrefab, hellSpawner);
-            }
-            else
-            {
-                weights[i] = Instantiate(weightPrefab, heavenSpawner);
-            }
+            Transform parent = id.definingMoments[i].isSinful ? hellSpawner : heavenSpawner;
+
+            Vector3 randomOffset = new Vector3(
+            Random.Range(-.05f, .05f),   // X range
+            0f,                      // keep Y the same
+            Random.Range(-.05f, .05f));    // Z range
+            Vector3 spawnPos = parent.position + randomOffset;
+
+            weights[i] = Instantiate(weightPrefab, spawnPos, Quaternion.identity, parent);
+
             weights[i].GetComponent<Weight>().index = i;
             weights[i].GetComponent<Weight>().isSinful = id.definingMoments[i].isSinful;
             weights[i].GetComponent<Weight>().isMoral = id.definingMoments[i].isMoral;
+            weights[i].GetComponent<Weight>().manager = this;
             weights[i].GetComponentInChildren<Renderer>().material.color = colors[i];
         }
     }

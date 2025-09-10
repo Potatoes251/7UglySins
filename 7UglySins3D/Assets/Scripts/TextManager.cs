@@ -32,7 +32,7 @@ public class TextManager : MonoBehaviour
     private void Ending(Dictionary<string, object> data)
     {
         Debug.Log("Ending is : " + (string)data["Ending"]);
-        //StartDialogs((string)data["Ending"]);
+        StartDialogs((string)data["Ending"]);
     }
 
     public void DisplayTexts(TextBox text, int index = 0, Dialog dialog = null)
