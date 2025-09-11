@@ -9,12 +9,12 @@ public class Weight : MonoBehaviour
     [HideInInspector]
     public WheightManager manager;
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("PlayArea"))
+        if (collision.collider.CompareTag("Ground"))
         {
-            Debug.Log($"Exited: {other.name}");
-            //manager.ResetWeight(index);
+            Debug.Log($"Exited: {collision.collider.name}");
+            manager.ResetWeight(index);
         }
     }
 }

@@ -31,19 +31,28 @@ public class Character : ScriptableObject
             if (id.dialogs.Length < 3)
             {
                 Debug.LogWarning("Not enough dialogs in : " + id.CharName);
-                Destroy(spawnedObject);
                 return;
             }
+
+            Vector3 start = spawnedObject.transform.position;
+            Vector3 end;
+
             if (goToHell)
             {
                 id.dialogs[2].DisplayDialog();
+                end = start + 3.5f * Vector3.forward;
             }
             else
             {
                 id.dialogs[1].DisplayDialog();
+                end = start + 3.5f * Vector3.back;
             }
-
-            Destroy(spawnedObject);
+            if (spawnedObject.GetComponent<MoveCharacters>() == null)
+            {
+                Debug.LogWarning("character missing its moving scripts");
+                return;
+            }
+            spawnedObject.GetComponent<MoveCharacters>().StartMoving(end);
         }
     }
 }

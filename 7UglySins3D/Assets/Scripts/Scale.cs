@@ -22,11 +22,14 @@ public class Scale : MonoBehaviour
 
         if (hellData.count + heavenData.count < 5)
         {
+            EventManager.TriggerEvent(GameEvent.MissingWeight, new Dictionary<string, object> { });
+            
             Debug.LogWarning("wheight(s) missing on the scale only " + (hellData.count + heavenData.count) + " present");
             return;
         }
         else if(hellData.count + heavenData.count > 5)
         {
+            EventManager.TriggerEvent(GameEvent.MissingWeight, new Dictionary<string, object> { });
             Debug.LogWarning("too many weights on the scale : hell : " + hellData.count + "hell : " + heavenData.count);
             return;
         }

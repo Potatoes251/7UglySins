@@ -58,6 +58,7 @@ public class WheightManager : MonoBehaviour
 
     public void ResetWeight(int index)
     {
+        Debug.Log("reset weight position");
         if (weights[index].GetComponent<Weight>().isSinful)
         {
             weights[index].transform.position = hellSpawner.position;
@@ -68,6 +69,9 @@ public class WheightManager : MonoBehaviour
             weights[index].transform.position = heavenSpawner.position;
             weights[index].transform.rotation = heavenSpawner.rotation;
         }
+        Rigidbody rb = weights[index].GetComponent<Rigidbody>();
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 
 }
