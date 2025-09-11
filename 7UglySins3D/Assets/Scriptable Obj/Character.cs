@@ -16,7 +16,7 @@ public class Character : ScriptableObject
         {
             if(spawner != null && id != null)
             {
-                Debug.Log("enters");
+                //Debug.Log("enters");
                 spawner.SpawnWheight(id);
             }
             spawnedObject = Instantiate(model, spawnPoint);
@@ -30,7 +30,7 @@ public class Character : ScriptableObject
         {
             if (id.dialogs.Length < 3)
             {
-                Debug.LogWarning("Not enough dialogs in : " + id.CharName);
+                //Debug.LogWarning("Not enough dialogs in : " + id.CharName);
                 return;
             }
 
@@ -49,7 +49,7 @@ public class Character : ScriptableObject
             }
             if (spawnedObject.GetComponent<MoveCharacters>() == null)
             {
-                Debug.LogWarning("character missing its moving scripts");
+                //Debug.LogWarning("character missing its moving scripts");
                 return;
             }
             spawnedObject.GetComponent<MoveCharacters>().StartMoving(end);

@@ -38,7 +38,7 @@ public class CharacterManager : MonoBehaviour
         }
         if (isCharacterPresent)
         {
-            Debug.Log("goToHell :" + (bool)data["goToHell"]);
+            //Debug.Log("goToHell :" + (bool)data["goToHell"]);
             character[currentChar].Exits((bool)data["goToHell"]);
             ++currentChar;
 
@@ -50,7 +50,7 @@ public class CharacterManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("switch character");
+            //Debug.Log("switch character");
             character[currentChar].Enters(spawnPoint, spawner);
         }
         isCharacterPresent = !isCharacterPresent;

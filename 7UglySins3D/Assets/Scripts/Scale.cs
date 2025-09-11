@@ -10,10 +10,8 @@ public enum ScaleState
 
 public class Scale : MonoBehaviour
 {
-    [SerializeField]
-    private ScaleSide hell;
-    [SerializeField]
-    private ScaleSide heaven;
+    public ScaleSide hell;
+    public ScaleSide heaven;
 
 
     void OnEnable()
@@ -23,7 +21,7 @@ public class Scale : MonoBehaviour
 
     private void Evaluate(Dictionary<string, object> data)
     {
-        Debug.Log("evaluate");
+        //Debug.Log("evaluate");
         WeightData hellData = hell.GetWeightData();
         WeightData heavenData = heaven.GetWeightData();
 
@@ -31,13 +29,13 @@ public class Scale : MonoBehaviour
         {
             EventManager.TriggerEvent(GameEvent.MissingWeight, new Dictionary<string, object> { });
             
-            Debug.LogWarning("wheight(s) missing on the scale only " + (hellData.count + heavenData.count) + " present");
+            //Debug.LogWarning("wheight(s) missing on the scale only " + (hellData.count + heavenData.count) + " present");
             return;
         }
         else if(hellData.count + heavenData.count > 5)
         {
             EventManager.TriggerEvent(GameEvent.MissingWeight, new Dictionary<string, object> { });
-            Debug.LogWarning("too many weights on the scale : hell : " + hellData.count + "hell : " + heavenData.count);
+            //Debug.LogWarning("too many weights on the scale : hell : " + hellData.count + "hell : " + heavenData.count);
             return;
         }
 
@@ -88,9 +86,9 @@ public class Scale : MonoBehaviour
         }
     }
 
-    public void MoveWeight()
+    public void MoveWeight(Weight[] weightsHell, Weight[] weightHeaven)
     {
-        hell.MoveWeight();
-        heaven.MoveWeight();
+        hell.MoveWeight(weightsHell);
+        heaven.MoveWeight(weightHeaven);
     }
 }

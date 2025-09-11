@@ -73,20 +73,20 @@ public class GameManager : MonoBehaviour
                 break;
 
             default:
-                Debug.LogWarning("Unhandled GameState: " + game_state);
+                //Debug.LogWarning("Unhandled GameState: " + game_state);
                 break;
         }
     }
 
     private void Init()
     {
-        Debug.Log("GameManager Initialized");
+        //Debug.Log("GameManager Initialized");
     }
 
     public void UpdateState(GameState targetState)
     {
  
-        Debug.Log("Game State Updated: " + game_state);
+        //Debug.Log("Game State Updated: " + game_state);
 
         switch (game_state)
         {
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             default:
-                Debug.LogWarning("Unhandled GameState: " + game_state);
+                //Debug.LogWarning("Unhandled GameState: " + game_state);
                 break;
         }
         game_state = targetState;
@@ -118,10 +118,10 @@ public class GameManager : MonoBehaviour
         switch (targetState)
         {
             case GameState.Entry:
-                Debug.LogWarning("switching state from entry to entry");
+                //Debug.LogWarning("switching state from entry to entry");
                 break;
             case GameState.Start:
-                Debug.Log("starting from entry");
+                //Debug.Log("starting from entry");
                 EventManager.TriggerEvent(GameEvent.NewCharacter, new Dictionary<string, object> { });
                 break;
 
@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("GameManager Enabled");
+        //Debug.Log("GameManager Enabled");
         EventManager.StartListening(GameEvent.ClickedStart, GameStart);
         EventManager.StartListening(GameEvent.Sentencing, Sentencing);
         EventManager.StartListening(GameEvent.LastCharacter, PickEnding);
@@ -153,14 +153,14 @@ public class GameManager : MonoBehaviour
     {
         UpdateState(GameState.Start);
 
-        Debug.Log("GameManager Function Triggered");
-        if (data.ContainsKey("message"))
-            Debug.Log((string)data["message"]);
+        //Debug.Log("GameManager Function Triggered");
+        //if (data.ContainsKey("message"))
+            //Debug.Log((string)data["message"]);
     }
 
     private void Sentencing(Dictionary<string, object> data)
     {
-        Debug.Log("Sentencing : obedience : " + (int)data["obedience"] + " morality" + (int)data["morality"]);
+        //Debug.Log("Sentencing : obedience : " + (int)data["obedience"] + " morality" + (int)data["morality"]);
         gameData.obedience += (int)data["obedience"];
         gameData.morality += (int)data["morality"];
         if ((bool)data["goToHell"])
@@ -171,8 +171,8 @@ public class GameManager : MonoBehaviour
 
     private void PickEnding(Dictionary<string, object> data) 
     {
-        Debug.Log("obedience" + gameData.obedience);
-        Debug.Log("morality" + gameData.morality);
+        //Debug.Log("obedience" + gameData.obedience);
+        //Debug.Log("morality" + gameData.morality);
         if (gameData.obedience > obedienceEndingThreshold)
         {
             EventManager.TriggerEvent(GameEvent.Ending, new Dictionary<string, object> { { "Ending", "obedience" } });

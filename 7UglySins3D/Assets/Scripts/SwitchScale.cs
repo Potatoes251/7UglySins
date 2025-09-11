@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SwitchScale : MonoBehaviour
@@ -9,11 +10,11 @@ public class SwitchScale : MonoBehaviour
     [SerializeField]
     private GameObject rightScale;
 
-    private float delay = 1f;
+    private float delay = .1f;
     private float timeLeft = 0f;
 
     private bool switched = false;
-
+    private bool isWaiting = false;
 
     private void Update()
     {
@@ -29,31 +30,31 @@ public class SwitchScale : MonoBehaviour
         }
     }
 
-    public void SwitchLeft()
+    public void SwitchLeft(Scale oldScale)
     {
         switched = true;
+        leftScale.GetComponent<Scale>().MoveWeight(oldScale.hell.GetWeightData().weight, oldScale.heaven.GetWeightData().weight);
         balancedScale.SetActive(false);
         leftScale.SetActive(true);
         rightScale.SetActive(false);
-        leftScale.GetComponent<Scale>().MoveWeight();
     }
 
-    public void SwitchRight()
+    public void SwitchRight(Scale oldScale)
     {
         switched = true;
+        rightScale.GetComponent<Scale>().MoveWeight(oldScale.hell.GetWeightData().weight, oldScale.heaven.GetWeightData().weight);
         balancedScale.SetActive(false);
         leftScale.SetActive(false);
         rightScale.SetActive(true);
-        rightScale.GetComponent<Scale>().MoveWeight();
     }
 
-    public void SwitchMiddle()
+    public void SwitchMiddle(Scale oldScale)
     {
         switched = true;
+        balancedScale.GetComponent<Scale>().MoveWeight(oldScale.hell.GetWeightData().weight, oldScale.heaven.GetWeightData().weight);
         balancedScale.SetActive(true);
         leftScale.SetActive(false);
         rightScale.SetActive(false);
-        balancedScale.GetComponent<Scale>().MoveWeight();
     }
 
     public void CheckScale()
@@ -67,18 +68,18 @@ public class SwitchScale : MonoBehaviour
             switch (balancedScale.GetComponent<Scale>().CheckScale())
             {
                 case ScaleState.right:
-                    SwitchRight();
+                    SwitchRight(balancedScale.GetComponent<Scale>());
                     break;
 
                 case ScaleState.left:
-                    SwitchLeft();
+                    SwitchLeft(balancedScale.GetComponent<Scale>());
                     break;
 
                 case ScaleState.middle:
                     break;
 
                 default:
-                    Debug.LogWarning("Scale state not handled");
+                    //Debug.LogWarning("Scale state not handled");
                     break;
             }
         }
@@ -87,18 +88,18 @@ public class SwitchScale : MonoBehaviour
             switch (leftScale.GetComponent<Scale>().CheckScale())
             {
                 case ScaleState.right:
-                    SwitchRight();
+                    SwitchRight(leftScale.GetComponent<Scale>());
                     break;
 
                 case ScaleState.left:
                     break;
 
                 case ScaleState.middle:
-                    SwitchMiddle();
+                    SwitchMiddle(leftScale.GetComponent<Scale>());
                     break;
 
                 default:
-                    Debug.LogWarning("Scale state not handled");
+                    //Debug.LogWarning("Scale state not handled");
                     break;
             }
         }
@@ -110,21 +111,35 @@ public class SwitchScale : MonoBehaviour
                     break;
 
                 case ScaleState.left:
-                    SwitchLeft();
+                    SwitchLeft(rightScale.GetComponent<Scale>());
                     break;
 
                 case ScaleState.middle:
-                    SwitchMiddle();
+                    SwitchMiddle(rightScale.GetComponent<Scale>());
                     break;
 
                 default:
-                    Debug.LogWarning("Scale state not handled");
+                    //Debug.LogWarning("Scale state not handled");
                     break;
             }
         }
         else
         {
-            Debug.LogWarning("No scale active");
+            //Debug.LogWarning("No scale active");
         }
+    }
+
+    public IEnumerator WaitForCheck()
+    {
+        if(isWaiting)
+        {
+            yield break;
+        }
+        isWaiting = true;
+
+        yield return new WaitForSeconds(delay);
+
+        isWaiting = false;
+        CheckScale();
     }
 }

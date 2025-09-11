@@ -22,9 +22,9 @@ public class ScaleSide : MonoBehaviour
         if (collision.collider.CompareTag("Weight"))
         {
             int index = collision.collider.GetComponent<Weight>().index;
-            weights[index] = collision.collider.GetComponent<Weight>();
+            weights[index] = collision.collider.GetComponentInChildren<Weight>();
             count++;
-            SwitchScale.CheckScale();
+            StartCoroutine(SwitchScale.WaitForCheck());
         }
     }
 
@@ -35,7 +35,7 @@ public class ScaleSide : MonoBehaviour
             int index = collision.collider.GetComponent<Weight>().index;
             weights[index] = null;
             count--;
-            SwitchScale.CheckScale();
+            StartCoroutine(SwitchScale.WaitForCheck());
         }
     }
 
@@ -53,9 +53,9 @@ public class ScaleSide : MonoBehaviour
         return data;
     }
 
-    public void MoveWeight(bool resetScale = true)
+    public void MoveWeight(Weight[] newWeights)
     {
-        Debug.Log("moving weights");
+        weights = newWeights;
         for (int i = 0; i < weights.Length; i++)
         {
             if (weights[i] != null)
@@ -63,9 +63,6 @@ public class ScaleSide : MonoBehaviour
                 weights[i].transform.position = plateau.transform.position;
             }
         }
-        if (resetScale)
-        {
-            ResetScale();
-        }
+        ResetScale();
     }
 }

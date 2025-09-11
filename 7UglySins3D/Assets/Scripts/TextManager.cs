@@ -35,13 +35,13 @@ public class TextManager : MonoBehaviour
 
     private void Ending(Dictionary<string, object> data)
     {
-        Debug.Log("Ending is : " + (string)data["Ending"]);
+        //Debug.Log("Ending is : " + (string)data["Ending"]);
         StartDialogs((string)data["Ending"]);
     }
 
     public void DisplayTexts(TextBox text, int index = 0, Dialog dialog = null)
     {
-        Debug.Log(index);
+        //Debug.Log(index);
         uiText.gameObject.SetActive(true);
         StartCoroutine(text.DisplayText(uiText, dialog, index));
     }
@@ -66,7 +66,7 @@ public class TextManager : MonoBehaviour
                 return dialogs[i];
             }
         }
-        Debug.Log("No dialogs named : " + name);
+        //Debug.Log("No dialogs named : " + name);
         return null;
     }
 

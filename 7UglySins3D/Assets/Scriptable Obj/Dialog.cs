@@ -12,10 +12,10 @@ public class Dialog : ScriptableObject
 
     public void DisplayDialog(int index = 0)
     {
-        Debug.Log("display dialog");
+        //Debug.Log("display dialog");
         if (index < boxes.Length)
         {
-            Debug.Log("inside display dialog");
+            //Debug.Log("inside display dialog");
             EventManager.TriggerEvent(GameEvent.StartText, new Dictionary<string, object> { });
             TextManager.instance.DisplayTexts(boxes[index], index, this);
         }
