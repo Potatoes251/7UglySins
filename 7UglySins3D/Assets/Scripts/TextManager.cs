@@ -1,7 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.InputSystem;
-using UnityEditor.Experimental.GraphView;
 using System.Collections.Generic;
 
 public class TextManager : MonoBehaviour
@@ -32,7 +30,7 @@ public class TextManager : MonoBehaviour
     private void Ending(Dictionary<string, object> data)
     {
         Debug.Log("Ending is : " + (string)data["Ending"]);
-        //StartDialogs((string)data["Ending"]);
+        StartDialogs((string)data["Ending"]);
     }
 
     public void DisplayTexts(TextBox text, int index = 0, Dialog dialog = null)
@@ -45,7 +43,11 @@ public class TextManager : MonoBehaviour
     {
         StopDialogs();
         Dialog Dia = FindDialog(name);
-        if (Dia != null) Dia.DisplayDialog();
+        if (Dia != null)
+        {
+            Dia.DisplayDialog();
+            EventManager.TriggerEvent(GameEvent.StartText, new Dictionary<string, object> { });
+        }
     }
 
     public Dialog FindDialog(string name)
@@ -63,6 +65,7 @@ public class TextManager : MonoBehaviour
 
     public void StopDialogs()
     {
+        EventManager.TriggerEvent(GameEvent.EndText, new Dictionary<string, object> { });
         StopAllCoroutines();
         uiText.gameObject.SetActive(false);
     }
