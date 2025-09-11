@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: Assembly-CSharp::TextBox
+  textToDisplay: 'Good, you''re here. You better listen carefully because I''m only
+    going to say this once. '
+  speed: 0.05
+  nextBox:
+    m_Name: NextBox
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: fb2f44c9-1acf-4eec-bcb5-151c65dce262
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: f638cbe7-723f-4c04-95a1-5b95d4cea5cb
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 92b8a456-4581-46d6-9fde-97b2de087fc6
+      m_Path: <Keyboard>/enter
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    m_Flags: 0

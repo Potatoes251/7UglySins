@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: Assembly-CSharp::TextBox
   textToDisplay: '"I''m preetty sure I saved an old woman once. That''s gotta count
-    or something, right..?"'
+    for something, right..?"'
   speed: 0.05
