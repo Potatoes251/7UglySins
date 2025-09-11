@@ -12,5 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
   m_Name: Text 2
   m_EditorClassIdentifier: Assembly-CSharp::TextBox
-  textToDisplay: 
+  textToDisplay: Reports've discovered an unnacceptable amount of mistakes on this
+    floor.. I WONDER who's to blame for that.
   speed: 0.05
+  nextBox:
+    m_Name: NextBox
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 17ae58c4-bd39-423c-9d30-8bcd9f8a5393
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 37c840a6-dcfa-4fff-8d92-4734baa4f4ca
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    - m_Name: 
+      m_Id: d48dd77e-243c-4e2b-b30a-173dde53daf4
+      m_Path: <Keyboard>/enter
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    m_Flags: 0
