@@ -58,7 +58,7 @@ public class WheightManager : MonoBehaviour
 
     public void ResetWeight(int index)
     {
-        Debug.Log("reset weight position");
+        Debug.Log("reset weight position for weight : " + index);
         if (weights[index].GetComponent<Weight>().isSinful)
         {
             weights[index].transform.position = hellSpawner.position;

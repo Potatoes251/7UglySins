@@ -14,7 +14,7 @@ public class Character : ScriptableObject
     {
         if (model != null)
         {
-            if(spawner != null)
+            if(spawner != null && id != null)
             {
                 Debug.Log("enters");
                 spawner.SpawnWheight(id);

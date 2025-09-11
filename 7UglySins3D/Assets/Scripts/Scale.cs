@@ -1,6 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ScaleState
+{
+    left,
+    right,
+    middle
+}
+
 public class Scale : MonoBehaviour
 {
     [SerializeField]
@@ -60,5 +67,30 @@ public class Scale : MonoBehaviour
 
         hell.ResetScale();
         heaven.ResetScale();
+    }
+
+    public ScaleState CheckScale()
+    {
+        WeightData hellData = hell.GetWeightData();
+        WeightData heavenData = heaven.GetWeightData();
+        Debug.Log("hell : " + hellData.count + " heaven : " + heavenData.count);
+        if (hellData.count == heavenData.count)
+        {
+            return ScaleState.middle;
+        }
+        else if (hellData.count < heavenData.count)
+        {
+            return ScaleState.right;
+        }
+        else
+        {
+            return ScaleState.left;
+        }
+    }
+
+    public void MoveWeight()
+    {
+        hell.MoveWeight();
+        heaven.MoveWeight();
     }
 }
