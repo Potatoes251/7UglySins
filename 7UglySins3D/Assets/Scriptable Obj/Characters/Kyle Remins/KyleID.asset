@@ -16,7 +16,22 @@ MonoBehaviour:
   gender: Male
   causeOfDeath: Guitar Voltage Mishap
   occupation: Guitarist
-  definingMoments: []
+  definingMoments:
+  - text: Hijacking live TV
+    isSinful: 1
+    isMoral: 0
+  - text: Teaching the homeless guitar
+    isSinful: 0
+    isMoral: 1
+  - text: Pushing the elderly
+    isSinful: 1
+    isMoral: 0
+  - text: Helping rescue pets
+    isSinful: 0
+    isMoral: 1
+  - text: Daring the gods to smite them
+    isSinful: 1
+    isMoral: 0
   dialogs:
   - {fileID: 11400000, guid: 5074153df23d8d64fa99ab8717168bd1, type: 2}
   - {fileID: 11400000, guid: 3a4dd535e43e2984486a136f08064ab5, type: 2}

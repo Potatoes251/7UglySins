@@ -16,7 +16,22 @@ MonoBehaviour:
   gender: Non-Binary
   causeOfDeath: '[REDACTED]'
   occupation: Evil Mastermind
-  definingMoments: []
+  definingMoments:
+  - text: Pressing all the Elevator Buttons
+    isSinful: 1
+    isMoral: 0
+  - text: Killing Hundreds of People
+    isSinful: 1
+    isMoral: 0
+  - text: Drinking Warm Water
+    isSinful: 1
+    isMoral: 0
+  - text: Sleeping Vertically
+    isSinful: 1
+    isMoral: 0
+  - text: Ramming a Truck into a Nursy Home
+    isSinful: 1
+    isMoral: 0
   dialogs:
   - {fileID: 11400000, guid: 1e63a712cab84904998cf9edecad32b7, type: 2}
   - {fileID: 11400000, guid: aeeacb39f7e1ba9479536a544fa07464, type: 2}

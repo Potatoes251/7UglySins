@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Hell
   m_EditorClassIdentifier: Assembly-CSharp::Dialog
   dialogName: Hell Reaction
-  boxes: []
+  boxes:
+  - {fileID: 11400000, guid: d656e4a2a99ce5a4f97b8218a281c3e4, type: 2}
   delay: 0.05

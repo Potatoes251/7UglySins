@@ -16,7 +16,22 @@ MonoBehaviour:
   gender: Male
   causeOfDeath: Gunfire
   occupation: War Veteran
-  definingMoments: []
+  definingMoments:
+  - text: The defense of their country
+    isSinful: 0
+    isMoral: 0
+  - text: Managed the usage of Scientific Breakthroughs
+    isSinful: 0
+    isMoral: 0
+  - text: Donations to Charities
+    isSinful: 0
+    isMoral: 1
+  - text: Left water running for 28 hours.
+    isSinful: 1
+    isMoral: 0
+  - text: Doing the dishes every day
+    isSinful: 0
+    isMoral: 1
   dialogs:
   - {fileID: 11400000, guid: f2bd384c68fce174090eecdf723691ca, type: 2}
   - {fileID: 11400000, guid: 5001de674ea9c7349a00d4fc712f59a8, type: 2}

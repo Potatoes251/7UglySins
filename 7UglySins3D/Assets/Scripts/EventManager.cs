@@ -6,7 +6,15 @@ using UnityEngine;
 /// 
 public enum GameEvent
 {
-    ClickedStart
+    ClickedStart,
+    NewCharacter,
+    MissingWeight,
+    Sentencing,
+    GoNext,
+    LastCharacter,
+    Ending,
+    StartText,
+    EndText
 }
 
 [DefaultExecutionOrder(-10000)]

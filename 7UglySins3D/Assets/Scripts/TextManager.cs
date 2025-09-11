@@ -1,16 +1,11 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.InputSystem;
-using UnityEditor.Experimental.GraphView;
+using System.Collections.Generic;
 
 public class TextManager : MonoBehaviour
 {
     public Dialog[] dialogs;
     public TMP_Text uiText;
-
-    public InputAction actionX;
-    public InputAction actionY;
-
 
     static public TextManager instance;
 
@@ -25,36 +20,18 @@ public class TextManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        StartDialogs("Test");
     }
 
     private void OnEnable()
     {
-        actionX.performed += OnXPressed;
-        actionY.performed += OnYPressed;
-
-        actionX.Enable();
-        actionY.Enable();
+        EventManager.StartListening(GameEvent.Ending, Ending);
     }
 
-    private void OnDisable()
+    private void Ending(Dictionary<string, object> data)
     {
-        actionX.Disable();
-        actionY.Disable();
-        actionX.performed -= OnXPressed;
-        actionY.performed -= OnYPressed;
+        Debug.Log("Ending is : " + (string)data["Ending"]);
+        StartDialogs((string)data["Ending"]);
     }
-
-    private void OnXPressed(InputAction.CallbackContext context)
-    {
-        StartDialogs("Test");
-    }
-
-    private void OnYPressed(InputAction.CallbackContext context)
-    {
-        StopDialogs();
-    }
-
 
     public void DisplayTexts(TextBox text, int index = 0, Dialog dialog = null)
     {
@@ -66,7 +43,11 @@ public class TextManager : MonoBehaviour
     {
         StopDialogs();
         Dialog Dia = FindDialog(name);
-        if (Dia != null) Dia.DisplayDialog();
+        if (Dia != null)
+        {
+            Dia.DisplayDialog();
+            EventManager.TriggerEvent(GameEvent.StartText, new Dictionary<string, object> { });
+        }
     }
 
     public Dialog FindDialog(string name)
@@ -78,11 +59,13 @@ public class TextManager : MonoBehaviour
                 return dialogs[i];
             }
         }
+        Debug.Log("No dialogs named : " + name);
         return null;
     }
 
     public void StopDialogs()
     {
+        EventManager.TriggerEvent(GameEvent.EndText, new Dictionary<string, object> { });
         StopAllCoroutines();
         uiText.gameObject.SetActive(false);
     }

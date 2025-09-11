@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Dialog", menuName = "Scriptable Objects/Dialog")]
@@ -13,6 +14,7 @@ public class Dialog : ScriptableObject
     {
         if (index < boxes.Length)
         {
+            EventManager.TriggerEvent(GameEvent.StartText, new Dictionary<string, object> { });
             TextManager.instance.DisplayTexts(boxes[index], index, this);
         }
         else

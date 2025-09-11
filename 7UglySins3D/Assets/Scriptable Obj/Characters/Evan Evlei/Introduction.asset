@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Introduction
   m_EditorClassIdentifier: Assembly-CSharp::Dialog
   dialogName: Introduction Reaction
-  boxes: []
-  delay: 0.05
+  boxes:
+  - {fileID: 11400000, guid: 9af344ac0bf358946a91cdeb637d3760, type: 2}
+  - {fileID: 11400000, guid: fe8101bdb8cec114e82fc3ee49940708, type: 2}
+  - {fileID: 11400000, guid: e7a96c56f33ca3f46ade748ae72d5daa, type: 2}
+  - {fileID: 11400000, guid: cb7ab6a027921af43b75a155064aa993, type: 2}
+  delay: 1

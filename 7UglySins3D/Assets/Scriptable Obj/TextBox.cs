@@ -1,6 +1,10 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
+using UnityEditor.Timeline.Actions;
+using Unity.VisualScripting;
+using NUnit.Framework;
 
 [CreateAssetMenu(fileName = "TextDisplay", menuName = "Scriptable Objects/TextDisplay")]
 public class TextBox : ScriptableObject
@@ -14,8 +18,30 @@ public class TextBox : ScriptableObject
 
     private string currentText = string.Empty;
 
-    public IEnumerator DisplayText(TMP_Text uiText, Dialog dialog = null, int index = 0)
+    [SerializeField]
+    private InputAction nextBox;
+
+    private bool continu;
+
+    private void OnEnable()
     {
+        nextBox = new InputAction("NextBox", InputActionType.Button);
+        nextBox.AddBinding("<Keyboard>/space");
+        nextBox.AddBinding("<Keyboard>/enter");
+
+        nextBox.performed += OnInput;
+        nextBox.Enable();
+    }
+
+    private void OnDisable()
+    {
+        nextBox.performed -= OnInput;
+        nextBox.Disable();
+    }
+
+    public IEnumerator DisplayText(TMP_Text uiText, Dialog dialog, int index = 0)
+    {
+
         if (currentText != string.Empty) currentText = string.Empty;
 
         for (int i = 0; i < textToDisplay.Length; i++)
@@ -24,11 +50,17 @@ public class TextBox : ScriptableObject
             uiText.text = currentText;
             yield return new WaitForSeconds(speed);
         }
-
+        continu = false;
         if (dialog != null)
         {
-            yield return new WaitForSeconds(dialog.delay);
+            yield return new WaitUntil(() => continu );
+            continu = false;
             dialog.DisplayDialog(++index);
         }
+    }
+
+    private void OnInput(InputAction.CallbackContext context)
+    {
+        continu = true;
     }
 }

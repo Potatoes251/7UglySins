@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Heaven
   m_EditorClassIdentifier: Assembly-CSharp::Dialog
   dialogName: Heaven Reaction
-  boxes: []
+  boxes:
+  - {fileID: 11400000, guid: b1ee7d56dfb28ee46b7c3e69759028b9, type: 2}
   delay: 0.05
