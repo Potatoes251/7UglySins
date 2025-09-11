@@ -19,7 +19,7 @@ public struct GameData
 public class GameManager : MonoBehaviour
 {
     // Singleton Instance
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instance { get; private set; } 
 
     [Header("Game Settings")]
     [SerializeField] public List<Character> characters = new List<Character>();
@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Init();
+       
     }
 
     private void Update()
