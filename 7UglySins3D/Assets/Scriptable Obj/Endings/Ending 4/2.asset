@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: Assembly-CSharp::TextBox
+  textToDisplay: You somehow managed to get every single decision wrong.
+  speed: 0.05
+  nextBox:
+    m_Name: NextBox
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: b185db26-4717-41e6-90c7-97f3a858d075
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a598380e-7caf-4d0b-bb61-822df336610f
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 05518fca-6ded-4c8d-96bc-e8022136ffbd
+      m_Path: <Keyboard>/enter
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    m_Flags: 0

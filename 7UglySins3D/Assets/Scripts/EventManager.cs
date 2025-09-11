@@ -14,7 +14,11 @@ public enum GameEvent
     LastCharacter,
     Ending,
     StartText,
-    EndText
+    EndText,
+    PlaySfx,         // payload: { "clip": AudioClip, ["pos": Vector3] | ["follow": Transform], ["loop": bool], ["volume": float], ["pitch": float], ["spatial": float] }
+    StopAllSfx,      // payload: { } (optional)
+    PlayMusic,       // payload: { "clip": AudioClip, ["fade": float], ["volume": float], ["loop": bool] }
+    StopMusic        // payload: { ["fade": float] }
 }
 
 [DefaultExecutionOrder(-10000)]

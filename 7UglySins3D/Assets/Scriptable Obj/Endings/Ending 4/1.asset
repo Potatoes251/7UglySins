@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: Assembly-CSharp::TextBox
+  textToDisplay: 'I can''t help but wonder if you did what you did in order to sabotage
+    Fate''s Judgment, or if you really are just that stupid. '
+  speed: 0.05
+  nextBox:
+    m_Name: NextBox
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 161d9e68-3ef3-46ba-bba0-065562811302
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 1d66a1c4-0ee9-4c6f-a1a6-d323e7ac4101
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    - m_Name: 
+      m_Id: d9e1916e-1c24-45e6-abd1-73d149243242
+      m_Path: <Keyboard>/enter
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    m_Flags: 0

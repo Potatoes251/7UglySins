@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+using UnityEngine.InputSystem;
+
+
 /// <summary>
 /// SO-driven draggable: multi-mesh proof visuals, single root MeshCollider, Y-locked dragging.
 /// Safe in Edit Mode via deferred rebuilds; no stripping or mutation of artist assets.
@@ -14,6 +17,10 @@ public class DraggableController : MonoBehaviour
     [Header("Configs")]
     public DraggableVisualConfig visual;
     public DraggableParams parameters;
+
+    Vector3 _pendingPhysicsPos;
+    bool _hasPendingPhysicsPos;
+    RigidbodyInterpolation _prevInterpolation;
 
     [Header("Scene Refs (auto if null)")]
     [Tooltip("Container for all renderers. Auto-created if missing.")]
@@ -35,17 +42,45 @@ public class DraggableController : MonoBehaviour
 
     bool _rebuildScheduled;
 
+    static Vector2 _restoreScreenPos;
+    static bool _hasRestoreScreenPos;
+
+    // Cursor control (shared across all draggables in scene)
+    static int _cursorHideRefs;
+    static bool _cursorPrevVisible;
+    static CursorLockMode _cursorPrevLock;
+
+    // optional: toggle via params (fallback true if params is null)
+    bool HideCursorFlag => parameters ? parameters.hideCursorWhileDragging : true;
+    bool ConfineCursorFlag => parameters ? parameters.confineCursorWhileDragging : true;
+
+
+
 
 
     void MoveImmediate(Vector3 worldPos)
     {
-        // If we have a Rigidbody and it's kinematic, use MovePosition for smooth drag
         if (_rb == null) _rb = GetComponent<Rigidbody>();
 
-        if (_rb && _rb.isKinematic)
-            _rb.MovePosition(worldPos);
-        else
-            transform.position = worldPos;
+        // If dragging a kinematic body, set position directly for 1:1 cursor tracking.
+        if (_dragging && _rb && _rb.isKinematic)
+        {
+            _rb.position = worldPos;          // exact, no physics timestep delay
+            _rb.linearVelocity = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
+            return;
+        }
+
+        // If we have a non-kinematic body, queue MovePosition for FixedUpdate.
+        if (_rb && !_rb.isKinematic)
+        {
+            _pendingPhysicsPos = worldPos;
+            _hasPendingPhysicsPos = true;
+            return;
+        }
+
+        // No rigidbody: move the transform directly.
+        transform.position = worldPos;
     }
 
     // ===== Editor/Init =====
@@ -93,6 +128,15 @@ public class DraggableController : MonoBehaviour
             meshCollider = GetComponent<MeshCollider>();
             if (meshCollider == null) meshCollider = gameObject.AddComponent<MeshCollider>();
             meshCollider.convex = true;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (_hasPendingPhysicsPos && _rb && !_rb.isKinematic)
+        {
+            _rb.MovePosition(_pendingPhysicsPos);
+            _hasPendingPhysicsPos = false;
         }
     }
 
@@ -244,6 +288,9 @@ public class DraggableController : MonoBehaviour
 
     void BeginDrag(Vector2 screenPos)
     {
+
+        if (HideCursorFlag) RequestHideCursor(ConfineCursorFlag);
+
         float lift = parameters ? parameters.liftHeight : 0.15f;
         _targetY = transform.position.y + lift;
         _dragPlane = new Plane(Vector3.up, new Vector3(0f, _targetY, 0f));
@@ -265,9 +312,13 @@ public class DraggableController : MonoBehaviour
 #if UNITY_2022_3_OR_NEWER
             _rb.linearVelocity = Vector3.zero;
 #else
-            _rb.velocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
 #endif
             _rb.angularVelocity = Vector3.zero;
+
+            // turn kinematic + disable interpolation so position writes are exact each frame
+            _prevInterpolation = _rb.interpolation;
+            _rb.interpolation = RigidbodyInterpolation.None;
             _rb.isKinematic = true;
         }
 
@@ -290,6 +341,7 @@ public class DraggableController : MonoBehaviour
 
     void EndDrag()
     {
+
         if (parameters && !parameters.keepLiftOnRelease)
         {
             var p = transform.position;
@@ -298,18 +350,29 @@ public class DraggableController : MonoBehaviour
         }
 
         if (_rb && (parameters ? parameters.makeKinematicWhileDragging : true))
+        {
+            // restore interpolation and kinematic state
             _rb.isKinematic = false;
+            _rb.interpolation = _prevInterpolation;
+        }
 
         if (parameters && parameters.dropToGroundOnRelease)
         {
             Vector3 start = transform.position + Vector3.up * 0.1f;
             if (Physics.Raycast(start, Vector3.down, out RaycastHit hit, 10f, parameters.groundMask, QueryTriggerInteraction.Ignore))
             {
-                Vector3 p = transform.position; p.y = hit.point.y + meshCollider.bounds.size.y/2; MoveImmediate(p);
+                Vector3 p = transform.position;
+                p.y = hit.point.y + meshCollider.bounds.size.y * 0.5f;
+                MoveImmediate(p);
             }
         }
 
+        _restoreScreenPos = GetMousePos();
+        _hasRestoreScreenPos = true;
+
+        if (HideCursorFlag) ReleaseHideCursor(); // (your existing call)
         _dragging = false;
+
     }
 
     Vector3 ClampInsideAreaXZ(Vector3 p, BoxCollider area, float innerPad)
@@ -340,6 +403,41 @@ public class DraggableController : MonoBehaviour
         {
             var go = GameObject.FindWithTag(parameters.playAreaTag);
             if (go) _allowedArea = go.GetComponent<BoxCollider>();
+        }
+    }
+
+    static void RequestHideCursor(bool confine)
+    {
+        if (!Application.isPlaying) return; // don’t touch editor cursor
+        if (_cursorHideRefs++ == 0)
+        {
+            _cursorPrevVisible = Cursor.visible;
+            _cursorPrevLock = Cursor.lockState;
+            Cursor.visible = false;
+            Cursor.lockState = confine ? CursorLockMode.Confined : CursorLockMode.None;
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        }
+    }
+
+    static void ReleaseHideCursor()
+    {
+        if (!Application.isPlaying) return;
+        _cursorHideRefs = Mathf.Max(0, _cursorHideRefs - 1);
+        if (_cursorHideRefs == 0)
+        {
+            Cursor.visible = _cursorPrevVisible;
+            Cursor.lockState = _cursorPrevLock;
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
+            if (_hasRestoreScreenPos && Mouse.current != null)
+            {
+                Mouse.current.WarpCursorPosition(_restoreScreenPos);
+                // No InputState.Change; not needed and not public.
+                // If you need to consume the restored position immediately,
+                // use _restoreScreenPos instead of reading the mouse this frame.
+            }
+
+            _hasRestoreScreenPos = false;
         }
     }
 
@@ -375,5 +473,23 @@ public class DraggableController : MonoBehaviour
         if (m != null && m.leftButton.wasReleasedThisFrame) return true;
 #endif
         return Input.GetMouseButtonUp(0);
+    }
+
+
+    void OnDisable()
+    {
+
+
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying) return;
+#endif
+        if (_dragging)
+        {
+            _restoreScreenPos = GetMousePos();
+            _hasRestoreScreenPos = true;
+            if (HideCursorFlag) ReleaseHideCursor();
+        }
+        _dragging = false;
     }
 }
