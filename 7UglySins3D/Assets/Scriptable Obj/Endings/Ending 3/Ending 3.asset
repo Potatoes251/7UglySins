@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialog
   dialogName: 
   boxes:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 088a0078d1136594eacf3e2a4f72d4e1, type: 2}
+  - {fileID: 11400000, guid: a9a185c9b5f53894d8f87608904b18c8, type: 2}
+  - {fileID: 11400000, guid: e7033ee1c55e0814fb816d109f0d8c90, type: 2}
+  - {fileID: 11400000, guid: 163b5b7bcfe823d4391a9fdbcaed1b2b, type: 2}
   delay: 0.05

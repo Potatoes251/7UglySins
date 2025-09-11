@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Evan Evlei
   m_EditorClassIdentifier: Assembly-CSharp::Character
   id: {fileID: 11400000, guid: b912d159a292ccc48a4a1a630e488cfa, type: 2}
-  model: {fileID: 3524238910097270112, guid: 9a8b728a91115154ca42f431df233275, type: 3}
+  model: {fileID: 5164134948099680086, guid: 90877b3e3836fa64588a6b4acf5f679f, type: 3}

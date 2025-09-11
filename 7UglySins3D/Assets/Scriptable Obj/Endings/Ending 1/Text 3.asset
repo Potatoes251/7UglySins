@@ -12,5 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
   m_Name: Text 3
   m_EditorClassIdentifier: Assembly-CSharp::TextBox
-  textToDisplay: 
+  textToDisplay: You had ONE job. STAMPING. PAPERS. The scales did everything for
+    you and you still managed to make mistakes.
   speed: 0.05
+  nextBox:
+    m_Name: NextBox
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: f64fb62e-d0a3-4645-9db7-ed7a9d12a3aa
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 12c8bf63-6234-4fac-8b54-6013765c587b
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    - m_Name: 
+      m_Id: cd3cf228-7aa4-4825-9523-1831b35ede44
+      m_Path: <Keyboard>/enter
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    m_Flags: 0

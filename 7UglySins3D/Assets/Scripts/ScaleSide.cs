@@ -9,26 +9,33 @@ public struct WeightData
 
 public class ScaleSide : MonoBehaviour
 {
+    [SerializeField]
+    private SwitchScale SwitchScale;
     private Weight[] weights = new Weight[5];
     private int count = 0;
 
-    private void OnTriggerEnter(Collider other)
+    [SerializeField]
+    private GameObject plateau;
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Weight"))
+        if (collision.collider.CompareTag("Weight"))
         {
-            int index = other.GetComponent<Weight>().index;
-            weights[index] = other.GetComponent<Weight>();
+            int index = collision.collider.GetComponent<Weight>().index;
+            weights[index] = collision.collider.GetComponentInChildren<Weight>();
             count++;
+            StartCoroutine(SwitchScale.WaitForCheck());
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.CompareTag("Weight"))
+        if (collision.collider.CompareTag("Weight"))
         {
-            int index = other.GetComponent<Weight>().index;
+            int index = collision.collider.GetComponent<Weight>().index;
             weights[index] = null;
             count--;
+            StartCoroutine(SwitchScale.WaitForCheck());
         }
     }
 
@@ -44,5 +51,18 @@ public class ScaleSide : MonoBehaviour
         data.count = count;
 
         return data;
+    }
+
+    public void MoveWeight(Weight[] newWeights)
+    {
+        weights = newWeights;
+        for (int i = 0; i < weights.Length; i++)
+        {
+            if (weights[i] != null)
+            {
+                weights[i].transform.position = plateau.transform.position;
+            }
+        }
+        ResetScale();
     }
 }

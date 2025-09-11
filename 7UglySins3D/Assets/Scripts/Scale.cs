@@ -1,12 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ScaleState
+{
+    left,
+    right,
+    middle
+}
+
 public class Scale : MonoBehaviour
 {
-    [SerializeField]
-    private ScaleSide hell;
-    [SerializeField]
-    private ScaleSide heaven;
+    public ScaleSide hell;
+    public ScaleSide heaven;
 
 
     void OnEnable()
@@ -16,7 +21,7 @@ public class Scale : MonoBehaviour
 
     private void Evaluate(Dictionary<string, object> data)
     {
-        Debug.Log("evaluate");
+        //Debug.Log("evaluate");
         WeightData hellData = hell.GetWeightData();
         WeightData heavenData = heaven.GetWeightData();
 
@@ -24,13 +29,13 @@ public class Scale : MonoBehaviour
         {
             EventManager.TriggerEvent(GameEvent.MissingWeight, new Dictionary<string, object> { });
             
-            Debug.LogWarning("wheight(s) missing on the scale only " + (hellData.count + heavenData.count) + " present");
+            //Debug.LogWarning("wheight(s) missing on the scale only " + (hellData.count + heavenData.count) + " present");
             return;
         }
         else if(hellData.count + heavenData.count > 5)
         {
             EventManager.TriggerEvent(GameEvent.MissingWeight, new Dictionary<string, object> { });
-            Debug.LogWarning("too many weights on the scale : hell : " + hellData.count + "hell : " + heavenData.count);
+            //Debug.LogWarning("too many weights on the scale : hell : " + hellData.count + "hell : " + heavenData.count);
             return;
         }
 
@@ -60,5 +65,30 @@ public class Scale : MonoBehaviour
 
         hell.ResetScale();
         heaven.ResetScale();
+    }
+
+    public ScaleState CheckScale()
+    {
+        WeightData hellData = hell.GetWeightData();
+        WeightData heavenData = heaven.GetWeightData();
+        Debug.Log("hell : " + hellData.count + " heaven : " + heavenData.count);
+        if (hellData.count == heavenData.count)
+        {
+            return ScaleState.middle;
+        }
+        else if (hellData.count < heavenData.count)
+        {
+            return ScaleState.right;
+        }
+        else
+        {
+            return ScaleState.left;
+        }
+    }
+
+    public void MoveWeight(Weight[] weightsHell, Weight[] weightHeaven)
+    {
+        hell.MoveWeight(weightsHell);
+        heaven.MoveWeight(weightHeaven);
     }
 }
