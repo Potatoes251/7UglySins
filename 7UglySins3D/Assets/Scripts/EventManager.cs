@@ -8,10 +8,13 @@ public enum GameEvent
 {
     ClickedStart,
     NewCharacter,
+    MissingWeight,
     Sentencing,
     GoNext,
     LastCharacter,
-    Ending
+    Ending,
+    StartText,
+    EndText
 }
 
 [DefaultExecutionOrder(-10000)]
