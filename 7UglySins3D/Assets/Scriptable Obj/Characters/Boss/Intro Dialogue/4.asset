@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: Assembly-CSharp::TextBox
+  textToDisplay: 'Souls will come into your office and you will be provided with
+    a sheet detailing their defining deeds. '
+  speed: 0.05
+  nextBox:
+    m_Name: NextBox
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 94d73245-ad98-43f8-a192-97ba6c485683
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 2d0252d2-fddf-42ad-8907-07366519e0b3
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 2ec097e9-c235-42f9-a8a6-e249425cda99
+      m_Path: <Keyboard>/enter
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    m_Flags: 0

@@ -816,8 +816,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
   character:
+  - {fileID: 11400000, guid: 6eee072bf35bff0408073fc938111590, type: 2}
   - {fileID: 11400000, guid: b5a5b1656a4a8fd4f901a34ced1d3d35, type: 2}
-  - {fileID: 11400000, guid: 7b71e5105432fbf4a9911798e74452b5, type: 2}
   clickableID: {fileID: 25214485}
   id: {fileID: 850895819}
   spawner: {fileID: 168100919}
