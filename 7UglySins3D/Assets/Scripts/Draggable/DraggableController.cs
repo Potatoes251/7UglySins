@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+using UnityEngine.InputSystem;
+
+
 /// <summary>
 /// SO-driven draggable: multi-mesh proof visuals, single root MeshCollider, Y-locked dragging.
 /// Safe in Edit Mode via deferred rebuilds; no stripping or mutation of artist assets.
@@ -38,6 +41,20 @@ public class DraggableController : MonoBehaviour
     BoxCollider _allowedArea;
 
     bool _rebuildScheduled;
+
+    static Vector2 _restoreScreenPos;
+    static bool _hasRestoreScreenPos;
+
+    // Cursor control (shared across all draggables in scene)
+    static int _cursorHideRefs;
+    static bool _cursorPrevVisible;
+    static CursorLockMode _cursorPrevLock;
+
+    // optional: toggle via params (fallback true if params is null)
+    bool HideCursorFlag => parameters ? parameters.hideCursorWhileDragging : true;
+    bool ConfineCursorFlag => parameters ? parameters.confineCursorWhileDragging : true;
+
+
 
 
 
@@ -271,6 +288,9 @@ public class DraggableController : MonoBehaviour
 
     void BeginDrag(Vector2 screenPos)
     {
+
+        if (HideCursorFlag) RequestHideCursor(ConfineCursorFlag);
+
         float lift = parameters ? parameters.liftHeight : 0.15f;
         _targetY = transform.position.y + lift;
         _dragPlane = new Plane(Vector3.up, new Vector3(0f, _targetY, 0f));
@@ -321,6 +341,7 @@ public class DraggableController : MonoBehaviour
 
     void EndDrag()
     {
+
         if (parameters && !parameters.keepLiftOnRelease)
         {
             var p = transform.position;
@@ -346,7 +367,12 @@ public class DraggableController : MonoBehaviour
             }
         }
 
+        _restoreScreenPos = GetMousePos();
+        _hasRestoreScreenPos = true;
+
+        if (HideCursorFlag) ReleaseHideCursor(); // (your existing call)
         _dragging = false;
+
     }
 
     Vector3 ClampInsideAreaXZ(Vector3 p, BoxCollider area, float innerPad)
@@ -377,6 +403,41 @@ public class DraggableController : MonoBehaviour
         {
             var go = GameObject.FindWithTag(parameters.playAreaTag);
             if (go) _allowedArea = go.GetComponent<BoxCollider>();
+        }
+    }
+
+    static void RequestHideCursor(bool confine)
+    {
+        if (!Application.isPlaying) return; // don’t touch editor cursor
+        if (_cursorHideRefs++ == 0)
+        {
+            _cursorPrevVisible = Cursor.visible;
+            _cursorPrevLock = Cursor.lockState;
+            Cursor.visible = false;
+            Cursor.lockState = confine ? CursorLockMode.Confined : CursorLockMode.None;
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        }
+    }
+
+    static void ReleaseHideCursor()
+    {
+        if (!Application.isPlaying) return;
+        _cursorHideRefs = Mathf.Max(0, _cursorHideRefs - 1);
+        if (_cursorHideRefs == 0)
+        {
+            Cursor.visible = _cursorPrevVisible;
+            Cursor.lockState = _cursorPrevLock;
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
+            if (_hasRestoreScreenPos && Mouse.current != null)
+            {
+                Mouse.current.WarpCursorPosition(_restoreScreenPos);
+                // No InputState.Change; not needed and not public.
+                // If you need to consume the restored position immediately,
+                // use _restoreScreenPos instead of reading the mouse this frame.
+            }
+
+            _hasRestoreScreenPos = false;
         }
     }
 
@@ -412,5 +473,23 @@ public class DraggableController : MonoBehaviour
         if (m != null && m.leftButton.wasReleasedThisFrame) return true;
 #endif
         return Input.GetMouseButtonUp(0);
+    }
+
+
+    void OnDisable()
+    {
+
+
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying) return;
+#endif
+        if (_dragging)
+        {
+            _restoreScreenPos = GetMousePos();
+            _hasRestoreScreenPos = true;
+            if (HideCursorFlag) ReleaseHideCursor();
+        }
+        _dragging = false;
     }
 }
