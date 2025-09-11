@@ -45,7 +45,7 @@ public class WheightManager : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.StartListening(GameEvent.GoNext, DeleteWheight);
+        EventManager.StartListening(GameEvent.Sentencing, DeleteWheight);
     }
 
     public void DeleteWheight(Dictionary<string, object> data)

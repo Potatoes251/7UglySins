@@ -9,6 +9,7 @@ public class TextManager : MonoBehaviour
 
     static public TextManager instance;
 
+    private bool isDialogPlaying = false;
     void Start()
     {
         if (instance != null)
@@ -48,7 +49,11 @@ public class TextManager : MonoBehaviour
 
     public void StartDialogs(string name)
     {
-        StopDialogs();
+        if (isDialogPlaying)
+        {
+            StopDialogs();
+        }
+        isDialogPlaying = true;
         Dialog Dia = FindDialog(name);
         if (Dia != null)
         {
@@ -72,6 +77,7 @@ public class TextManager : MonoBehaviour
 
     public void StopDialogs()
     {
+        isDialogPlaying = false;
         StopAllCoroutines();
         uiText.gameObject.SetActive(false);
         EventManager.TriggerEvent(GameEvent.EndText, new Dictionary<string, object> { });
