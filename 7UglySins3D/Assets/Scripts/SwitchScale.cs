@@ -9,11 +9,6 @@ public class SwitchScale : MonoBehaviour
     [SerializeField]
     private GameObject rightScale;
 
-    [SerializeField]
-    private GameObject hellSpawn;
-    [SerializeField]
-    private GameObject heavenSpawn;
-
     private float delay = 1f;
     private float timeLeft = 0f;
 
