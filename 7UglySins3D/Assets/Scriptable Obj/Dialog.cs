@@ -12,9 +12,25 @@ public class Dialog : ScriptableObject
 
     public void DisplayDialog(int index = 0)
     {
+        Debug.Log("display dialog");
+        if (index < boxes.Length)
+        {
+            Debug.Log("inside display dialog");
+            EventManager.TriggerEvent(GameEvent.StartText, new Dictionary<string, object> { });
+            TextManager.instance.DisplayTexts(boxes[index], index, this);
+        }
+        else
+        {
+            TextManager.instance.StopDialogs();
+        }
+    }
+
+    public void DisplayDialog(bool message, int index = 0)
+    {
         if (index < boxes.Length)
         {
             EventManager.TriggerEvent(GameEvent.StartText, new Dictionary<string, object> { });
+            EventManager.TriggerEvent(GameEvent.NewCharacter, new Dictionary<string, object> { });
             TextManager.instance.DisplayTexts(boxes[index], index, this);
         }
         else

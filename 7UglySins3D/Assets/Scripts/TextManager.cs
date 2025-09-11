@@ -25,6 +25,12 @@ public class TextManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.StartListening(GameEvent.Ending, Ending);
+        EventManager.StartListening(GameEvent.ClickedStart, Starting);
+    }
+
+    private void Starting(Dictionary<string, object> data)
+    {
+        StartDialogs("Boss");
     }
 
     private void Ending(Dictionary<string, object> data)
@@ -35,6 +41,7 @@ public class TextManager : MonoBehaviour
 
     public void DisplayTexts(TextBox text, int index = 0, Dialog dialog = null)
     {
+        Debug.Log(index);
         uiText.gameObject.SetActive(true);
         StartCoroutine(text.DisplayText(uiText, dialog, index));
     }
@@ -65,8 +72,8 @@ public class TextManager : MonoBehaviour
 
     public void StopDialogs()
     {
-        EventManager.TriggerEvent(GameEvent.EndText, new Dictionary<string, object> { });
         StopAllCoroutines();
         uiText.gameObject.SetActive(false);
+        EventManager.TriggerEvent(GameEvent.EndText, new Dictionary<string, object> { });
     }
 }
