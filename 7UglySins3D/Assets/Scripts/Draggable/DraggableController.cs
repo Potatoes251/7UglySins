@@ -15,6 +15,10 @@ public class DraggableController : MonoBehaviour
     public DraggableVisualConfig visual;
     public DraggableParams parameters;
 
+    Vector3 _pendingPhysicsPos;
+    bool _hasPendingPhysicsPos;
+    RigidbodyInterpolation _prevInterpolation;
+
     [Header("Scene Refs (auto if null)")]
     [Tooltip("Container for all renderers. Auto-created if missing.")]
     public Transform visualRoot;
@@ -39,13 +43,27 @@ public class DraggableController : MonoBehaviour
 
     void MoveImmediate(Vector3 worldPos)
     {
-        // If we have a Rigidbody and it's kinematic, use MovePosition for smooth drag
         if (_rb == null) _rb = GetComponent<Rigidbody>();
 
-        if (_rb && _rb.isKinematic)
-            _rb.MovePosition(worldPos);
-        else
-            transform.position = worldPos;
+        // If dragging a kinematic body, set position directly for 1:1 cursor tracking.
+        if (_dragging && _rb && _rb.isKinematic)
+        {
+            _rb.position = worldPos;          // exact, no physics timestep delay
+            _rb.linearVelocity = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
+            return;
+        }
+
+        // If we have a non-kinematic body, queue MovePosition for FixedUpdate.
+        if (_rb && !_rb.isKinematic)
+        {
+            _pendingPhysicsPos = worldPos;
+            _hasPendingPhysicsPos = true;
+            return;
+        }
+
+        // No rigidbody: move the transform directly.
+        transform.position = worldPos;
     }
 
     // ===== Editor/Init =====
@@ -93,6 +111,15 @@ public class DraggableController : MonoBehaviour
             meshCollider = GetComponent<MeshCollider>();
             if (meshCollider == null) meshCollider = gameObject.AddComponent<MeshCollider>();
             meshCollider.convex = true;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (_hasPendingPhysicsPos && _rb && !_rb.isKinematic)
+        {
+            _rb.MovePosition(_pendingPhysicsPos);
+            _hasPendingPhysicsPos = false;
         }
     }
 
@@ -265,9 +292,13 @@ public class DraggableController : MonoBehaviour
 #if UNITY_2022_3_OR_NEWER
             _rb.linearVelocity = Vector3.zero;
 #else
-            _rb.velocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
 #endif
             _rb.angularVelocity = Vector3.zero;
+
+            // turn kinematic + disable interpolation so position writes are exact each frame
+            _prevInterpolation = _rb.interpolation;
+            _rb.interpolation = RigidbodyInterpolation.None;
             _rb.isKinematic = true;
         }
 
@@ -298,14 +329,20 @@ public class DraggableController : MonoBehaviour
         }
 
         if (_rb && (parameters ? parameters.makeKinematicWhileDragging : true))
+        {
+            // restore interpolation and kinematic state
             _rb.isKinematic = false;
+            _rb.interpolation = _prevInterpolation;
+        }
 
         if (parameters && parameters.dropToGroundOnRelease)
         {
             Vector3 start = transform.position + Vector3.up * 0.1f;
             if (Physics.Raycast(start, Vector3.down, out RaycastHit hit, 10f, parameters.groundMask, QueryTriggerInteraction.Ignore))
             {
-                Vector3 p = transform.position; p.y = hit.point.y + meshCollider.bounds.size.y/2; MoveImmediate(p);
+                Vector3 p = transform.position;
+                p.y = hit.point.y + meshCollider.bounds.size.y * 0.5f;
+                MoveImmediate(p);
             }
         }
 
