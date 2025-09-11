@@ -41,7 +41,7 @@ public class TextBox : ScriptableObject
 
     public IEnumerator DisplayText(TMP_Text uiText, Dialog dialog, int index = 0)
     {
-
+        continu = false;
         if (currentText != string.Empty) currentText = string.Empty;
 
         for (int i = 0; i < textToDisplay.Length; i++)
@@ -49,7 +49,12 @@ public class TextBox : ScriptableObject
             currentText += textToDisplay[i];
             uiText.text = currentText;
             yield return new WaitForSeconds(speed);
+            if (continu)
+            {
+                break;
+            }
         }
+        uiText.text = textToDisplay;
         continu = false;
         if (dialog != null)
         {

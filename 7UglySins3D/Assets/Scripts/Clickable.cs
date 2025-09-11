@@ -26,11 +26,16 @@ public class Clickable : MonoBehaviour
         Vector2 mousePos = Mouse.current.position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
-        if (Physics.Raycast(ray, out RaycastHit hit)) // 3D version
+        if (objectToToggle.activeSelf)
+        {
+            objectToToggle.SetActive(false);
+        }
+
+        else if (Physics.Raycast(ray, out RaycastHit hit)) // 3D version
         {
             if (hit.collider.gameObject == this.gameObject)
             {
-                objectToToggle.SetActive(!objectToToggle.activeSelf);
+                objectToToggle.SetActive(true);
             }
         }
     }

@@ -14,13 +14,13 @@ public class WheightManager : MonoBehaviour
 
     private GameObject[] weights = new GameObject[5];
 
-    private Color[] colors = new Color[] { Color.black , Color.white, Color.aliceBlue, Color.beige, Color.purple };
+    private Color[] colors = new Color[] { Color.black , Color.white, Color.blue, Color.beige, Color.purple };
 
     public void SpawnWheight(CharID id)
     {
         if (weightPrefab == null)
         {
-            Debug.LogWarning("Missing weight prefab in wheight manager");
+            //Debug.LogWarning("Missing weight prefab in wheight manager");
             return;
         }
         for (int i = 0; i < id.definingMoments.Length; i++)
@@ -58,7 +58,7 @@ public class WheightManager : MonoBehaviour
 
     public void ResetWeight(int index)
     {
-        Debug.Log("reset weight position");
+        //Debug.Log("reset weight position for weight : " + index);
         if (weights[index].GetComponent<Weight>().isSinful)
         {
             weights[index].transform.position = hellSpawner.position;

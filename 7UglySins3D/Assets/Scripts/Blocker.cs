@@ -14,13 +14,13 @@ public class Blocker : MonoBehaviour
 
     private void Block(Dictionary<string, object> data)
     {
-        Debug.Log("Blocking");
+        //Debug.Log("Blocking");
         blocker.SetActive(true);
     }
 
     private void UnBlock(Dictionary<string, object> data)
     {
-        Debug.Log("Blocking");
+        //Debug.Log("Blocking");
         blocker.SetActive(false);
     }
 }

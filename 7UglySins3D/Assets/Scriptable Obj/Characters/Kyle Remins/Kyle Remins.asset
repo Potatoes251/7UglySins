@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Kyle Remins
   m_EditorClassIdentifier: Assembly-CSharp::Character
   id: {fileID: 11400000, guid: e877af112dbeec54e996f918764806c8, type: 2}
-  model: {fileID: 0}
+  model: {fileID: 6864590440514817489, guid: c5f4c54789fb0b7458c83e8a57f6684f, type: 3}
