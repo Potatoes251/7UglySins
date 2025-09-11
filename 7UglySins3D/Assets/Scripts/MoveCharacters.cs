@@ -7,7 +7,7 @@ public class MoveCharacters : MonoBehaviour
 
     public void StartMoving(Vector3 endPoint)
     {
-        StartCoroutine(MoveAndDestroy(endPoint, 5f));
+        StartCoroutine(MoveAndDestroy(endPoint, 1f));
     }
 
     private IEnumerator MoveAndDestroy(Vector3 endPoint, float duration)

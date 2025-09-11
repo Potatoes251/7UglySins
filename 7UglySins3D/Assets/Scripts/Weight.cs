@@ -13,7 +13,7 @@ public class Weight : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
-            Debug.Log($"Exited: {collision.collider.name}");
+            //Debug.Log($"Exited: {collision.collider.name}");
             manager.ResetWeight(index);
         }
     }

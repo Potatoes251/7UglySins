@@ -15,7 +15,7 @@ public class InitID : MonoBehaviour
     {
         if (id == null)
         {
-            Debug.LogWarning("id not set");
+            //Debug.LogWarning("id not set");
             return;
         }
 

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Oscar Graves
   m_EditorClassIdentifier: Assembly-CSharp::Character
   id: {fileID: 11400000, guid: 9862da6f1676e80468edb72f407795d4, type: 2}
-  model: {fileID: 0}
+  model: {fileID: 9138550079810157877, guid: 8482e9f8f416f4f46ab14a7ac01e0551, type: 3}

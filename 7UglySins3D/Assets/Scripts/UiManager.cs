@@ -27,7 +27,7 @@ public class UiManager : MonoBehaviour
     public void ClickedStart()  
     {
         string message = "fuck";
-        Debug.Log("clicked");
+        //Debug.Log("clicked");
         EventManager.TriggerEvent(GameEvent.ClickedStart, new Dictionary<string, object> { { "message", message } });
         if (startButton != null)
         {
