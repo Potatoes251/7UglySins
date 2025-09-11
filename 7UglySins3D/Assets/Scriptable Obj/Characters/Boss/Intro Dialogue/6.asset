@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
   m_Name: 6
   m_EditorClassIdentifier: Assembly-CSharp::TextBox
-  textToDisplay: 'And let me emphasize: The scales are ALWAYS accurate, deviation
-    from their judgment will not be tolerated.
+  textToDisplay: 'And let me emphasize: The scales are <color=red>ALWAYS</color>
+    accurate, deviation from their judgment will not be tolerated.
 
 '
   speed: 0.05
@@ -21,12 +21,12 @@ MonoBehaviour:
     m_Name: NextBox
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: 64e732df-30d2-45b4-bc47-742f79e5faac
+    m_Id: dfcd1493-a622-484c-9e4f-8195d216f74f
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 03a54990-16cd-4d36-90e9-37f22b9a0e18
+      m_Id: 84f9e0b9-9235-4aa9-ab36-468e43d1279f
       m_Path: <Keyboard>/space
       m_Interactions: 
       m_Processors: 
@@ -34,7 +34,7 @@ MonoBehaviour:
       m_Action: NextBox
       m_Flags: 0
     - m_Name: 
-      m_Id: 9bf5d12e-d01a-4414-bc47-71d6c8894203
+      m_Id: ffc2bde6-f53a-45f4-a4b9-9edebf53116e
       m_Path: <Keyboard>/enter
       m_Interactions: 
       m_Processors: 

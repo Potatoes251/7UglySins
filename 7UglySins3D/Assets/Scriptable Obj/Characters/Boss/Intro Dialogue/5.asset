@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: 5
   m_EditorClassIdentifier: Assembly-CSharp::TextBox
   textToDisplay: The scales of judgment on your right will automatically judge the
-    soul based on their sins and virtues, which will be represented by weights of
-    a certain color in accordance with the sheet provided to you.
+    soul based on their sins and virtues, which will be represented by <color=red>weights
+    of a certain color</color> in accordance with the sheet provided to you.
   speed: 0.05
   nextBox:
     m_Name: NextBox
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: ed2e1cbc-b4af-4ea2-b69e-8d8fbfbef2ef
+    m_Id: 91ffdfb1-407b-4ce1-83a9-ca27d8878ef3
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 2b0bd789-94c4-4f3f-80a4-80bedca122c6
+      m_Id: 9eabeca7-65b6-4cc1-9c16-63ceae33e854
       m_Path: <Keyboard>/space
       m_Interactions: 
       m_Processors: 
@@ -33,7 +33,7 @@ MonoBehaviour:
       m_Action: NextBox
       m_Flags: 0
     - m_Name: 
-      m_Id: ebcb67a6-8f7d-4c40-ab28-dd0eae424d07
+      m_Id: c54ec752-776b-4180-9fb2-c9899197ce03
       m_Path: <Keyboard>/enter
       m_Interactions: 
       m_Processors: 
