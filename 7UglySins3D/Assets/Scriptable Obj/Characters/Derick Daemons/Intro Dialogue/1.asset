@@ -14,3 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextBox
   textToDisplay: '"Hey, I''m Derick."'
   speed: 0.05
+  nextBox:
+    m_Name: NextBox
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 75784b0e-5549-49c3-b861-119aa5f2018b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 0c8b4ca5-6ff4-4ad4-8e4f-d1f243e08194
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 364240d8-644a-4955-b292-035447fd99a1
+      m_Path: <Keyboard>/enter
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    m_Flags: 0

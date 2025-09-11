@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 5
   m_EditorClassIdentifier: Assembly-CSharp::TextBox
   textToDisplay: '"Was it not blood of the innocent after all? He did look like that
-    murder on TV.."'
+    murderer on TV.."'
   speed: 0.05
