@@ -293,7 +293,7 @@ public class DraggableController : MonoBehaviour
 
         float lift = parameters ? parameters.liftHeight : 0.15f;
         _targetY = transform.position.y + lift;
-        _dragPlane = new Plane(new Vector3(0f, 1f, 0.6f), new Vector3(0f, _targetY, 0f));
+        _dragPlane = new Plane(new Vector3(0f, 1f, 0.6f), new Vector3(-45.5f, _targetY, 0.33f));
 
         Ray ray = _cam.ScreenPointToRay(screenPos);
         if (_dragPlane.Raycast(ray, out float enter))
