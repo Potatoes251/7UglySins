@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e4fcea9294af74291a557278093eb1, type: 3}
   m_Name: Stamp visual
   m_EditorClassIdentifier: Assembly-CSharp::DraggableVisualConfig
-  modelPrefab: {fileID: 2581528346438373094, guid: 78990cd94d0e51b4a8ae1339562fa3f7, type: 3}
+  modelPrefab: {fileID: 919132149155446097, guid: 0f0e48981ca22db41a15ccb7a43f8c54, type: 3}
   meshes: []
   materialsOverride: []
   collisionMesh: {fileID: 0}

@@ -34,6 +34,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int obedienceEndingThreshold = 5;
 
+    private bool ended = false;
+
+    [SerializeField]
+    private GameObject BaseScreen;
+    [SerializeField]
+    private GameObject BossScreen;
+
     private void Awake()
     {
         // Implement Singleton pattern
@@ -158,12 +165,15 @@ public class GameManager : MonoBehaviour
         //Debug.Log("GameManager Enabled");
         EventManager.StartListening(GameEvent.ClickedStart, GameStart);
         EventManager.StartListening(GameEvent.Sentencing, Sentencing);
-        EventManager.StartListening(GameEvent.LastCharacter, PickEnding);
+        EventManager.StartListening(GameEvent.LastCharacter, StartEnding);
+        EventManager.StartListening(GameEvent.EndText, PickEnding);
     }
 
     private void OnDisable()
     {
         EventManager.StopListening(GameEvent.ClickedStart, GameStart);
+        EventManager.StopListening(GameEvent.ClickedStart, SetBossScreen);
+        EventManager.StopListening(GameEvent.EndText, SetBaseScreen);
     }
 
     private void GameStart(Dictionary<string, object> data)
@@ -173,6 +183,19 @@ public class GameManager : MonoBehaviour
         //Debug.Log("GameManager Function Triggered");
         //if (data.ContainsKey("message"))
             //Debug.Log((string)data["message"]);
+    }
+
+    private void SetBossScreen(Dictionary<string, object> data)
+    {
+        Debug.Log("here");
+        BaseScreen.SetActive(false);
+        BossScreen.SetActive(true);
+    }
+    
+    private void SetBaseScreen(Dictionary<string, object> data)
+    {
+        BaseScreen.SetActive(true);
+        BossScreen.SetActive(false);
     }
 
     private void Sentencing(Dictionary<string, object> data)
@@ -186,8 +209,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void StartEnding(Dictionary<string, object> data)
+    {
+        ended = true;
+    }
+
     private void PickEnding(Dictionary<string, object> data) 
     {
+        if (!ended)
+        {
+            return;
+        }
+        Debug.Log("here");
         //Debug.Log("obedience" + gameData.obedience);
         //Debug.Log("morality" + gameData.morality);
         if (gameData.obedience > obedienceEndingThreshold)

@@ -22,6 +22,7 @@ public class CharacterManager : MonoBehaviour
     private Transform spawnPoint;
 
     private bool characterWaiting = false;
+    private bool lastPassed = false;
 
     private void OnEnable()
     {
@@ -40,6 +41,7 @@ public class CharacterManager : MonoBehaviour
         {
             currentChar = 0;
             EventManager.TriggerEvent(GameEvent.LastCharacter, new Dictionary<string, object> { });
+            lastPassed = true;
         }
         if (clickableID != null) 
         { 
@@ -50,7 +52,7 @@ public class CharacterManager : MonoBehaviour
     public void NextCharacter(Dictionary<string, object> data)
     {
         Debug.Log("switch character");
-        if (!characterWaiting)
+        if (!characterWaiting || lastPassed)
         {
             return;
         }

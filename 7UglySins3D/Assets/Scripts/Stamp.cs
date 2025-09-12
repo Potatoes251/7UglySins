@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,8 +22,18 @@ public class Stamp : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            transform.position = spawn.transform.position;
+            transform.rotation = spawn.transform.rotation;
+        }
+    }
+
     private void ResetPosition(Dictionary<string, object> data)
     {
         transform.position = spawn.transform.position;
+        transform.rotation = spawn.transform.rotation;
     }
 }

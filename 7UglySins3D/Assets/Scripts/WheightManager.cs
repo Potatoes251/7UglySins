@@ -10,11 +10,9 @@ public class WheightManager : MonoBehaviour
     private Transform heavenSpawner;
 
     [SerializeField]
-    private GameObject weightPrefab;
+    private GameObject[] weightPrefab;
 
     private GameObject[] weights = new GameObject[5];
-
-    private Color[] colors = new Color[] { Color.black , Color.white, Color.blue, Color.beige, Color.purple };
 
     public void SpawnWheight(CharID id)
     {
@@ -25,6 +23,10 @@ public class WheightManager : MonoBehaviour
         }
         for (int i = 0; i < id.definingMoments.Length; i++)
         {
+            if(weightPrefab[i] == null)
+            {
+                Debug.LogWarning("missing weight number : " + i);
+            }
             Transform parent = id.definingMoments[i].isSinful ? hellSpawner : heavenSpawner;
 
             Vector3 randomOffset = new Vector3(
@@ -33,13 +35,12 @@ public class WheightManager : MonoBehaviour
             Random.Range(-.05f, .05f));    // Z range
             Vector3 spawnPos = parent.position + randomOffset;
 
-            weights[i] = Instantiate(weightPrefab, spawnPos, Quaternion.identity, parent);
+            weights[i] = Instantiate(weightPrefab[i], spawnPos, Quaternion.identity, parent);
 
             weights[i].GetComponent<Weight>().index = i;
             weights[i].GetComponent<Weight>().isSinful = id.definingMoments[i].isSinful;
             weights[i].GetComponent<Weight>().isMoral = id.definingMoments[i].isMoral;
             weights[i].GetComponent<Weight>().manager = this;
-            weights[i].GetComponentInChildren<Renderer>().material.color = colors[i];
         }
     }
 

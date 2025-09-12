@@ -28,7 +28,7 @@ public class Character : ScriptableObject
         }
     }
 
-    public void Exits(bool goToHell = true)
+    public void Exits(bool goToHell)
     {
         if (spawnedObject != null)
         {

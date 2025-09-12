@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbfc7ea5df56c44bb1a9604011bea66, type: 3}
   m_Name: Ending 4
   m_EditorClassIdentifier: Assembly-CSharp::Dialog
-  dialogName: 
+  dialogName: immoral
   boxes:
   - {fileID: 11400000, guid: 363f14955d2a2d2499d8734e84636209, type: 2}
   - {fileID: 11400000, guid: da2271761f1f9e64a96d629696088029, type: 2}
