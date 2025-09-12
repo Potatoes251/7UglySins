@@ -12,19 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
   m_Name: 4
   m_EditorClassIdentifier: Assembly-CSharp::TextBox
-  textToDisplay: 'Souls will come into your office and you will be provided with
-    a sheet detailing their defining deeds. '
+  textToDisplay: The scales of judgment on your right will automatically judge the
+    soul based on their sins and virtues, which will be represented by <color=red>weights
+    of a certain color</color> in accordance with the sheet provided to you.
   speed: 0.05
   nextBox:
     m_Name: NextBox
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: 94d73245-ad98-43f8-a192-97ba6c485683
+    m_Id: 91ffdfb1-407b-4ce1-83a9-ca27d8878ef3
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 2d0252d2-fddf-42ad-8907-07366519e0b3
+      m_Id: 9eabeca7-65b6-4cc1-9c16-63ceae33e854
       m_Path: <Keyboard>/space
       m_Interactions: 
       m_Processors: 
@@ -32,7 +33,7 @@ MonoBehaviour:
       m_Action: NextBox
       m_Flags: 0
     - m_Name: 
-      m_Id: 2ec097e9-c235-42f9-a8a6-e249425cda99
+      m_Id: c54ec752-776b-4180-9fb2-c9899197ce03
       m_Path: <Keyboard>/enter
       m_Interactions: 
       m_Processors: 
