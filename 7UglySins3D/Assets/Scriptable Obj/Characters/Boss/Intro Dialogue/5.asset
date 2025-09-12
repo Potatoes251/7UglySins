@@ -12,21 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
   m_Name: 5
   m_EditorClassIdentifier: Assembly-CSharp::TextBox
-  textToDisplay: 'And let me emphasize: The scales are <color=red>ALWAYS</color>
-    accurate, deviation from their judgment will not be tolerated.
-
-'
+  textToDisplay: The left scale represents hell and the right one heaven.
   speed: 0.05
   nextBox:
     m_Name: NextBox
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: dfcd1493-a622-484c-9e4f-8195d216f74f
+    m_Id: e55f0e4a-8a44-4de3-83f4-52f9f11f2fe6
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 84f9e0b9-9235-4aa9-ab36-468e43d1279f
+      m_Id: 741f1201-c095-40ab-81ca-6f3210ac459f
       m_Path: <Keyboard>/space
       m_Interactions: 
       m_Processors: 
@@ -34,7 +31,7 @@ MonoBehaviour:
       m_Action: NextBox
       m_Flags: 0
     - m_Name: 
-      m_Id: ffc2bde6-f53a-45f4-a4b9-9edebf53116e
+      m_Id: 3e95963b-904b-4ad1-97a7-99653709a245
       m_Path: <Keyboard>/enter
       m_Interactions: 
       m_Processors: 

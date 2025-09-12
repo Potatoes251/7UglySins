@@ -29,7 +29,7 @@ public class Button : MonoBehaviour
             //Debug.Log(hit.collider);
             if (hit.collider.CompareTag("Button"))
             {
-                //Debug.Log("tag");
+                Debug.Log("GoNext");
                 EventManager.TriggerEvent(GameEvent.GoNext, new Dictionary<string, object> { });
             }
         }

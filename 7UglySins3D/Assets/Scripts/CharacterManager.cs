@@ -22,42 +22,48 @@ public class CharacterManager : MonoBehaviour
     private Transform spawnPoint;
 
     private bool characterWaiting = false;
+    private bool lastPassed = false;
 
     private void OnEnable()
     {
         EventManager.StartListening(GameEvent.NewCharacter, NewCharacter);
-        EventManager.StartListening(GameEvent.EndText, SwitchCharacter);
-        EventManager.StartListening(GameEvent.Sentencing, SwitchCharacter);
+        EventManager.StartListening(GameEvent.EndText, NextCharacter);
+        EventManager.StartListening(GameEvent.Sentencing, ExitCharacter);
     }
 
-    public void SwitchCharacter(Dictionary<string, object> data)
+    public void ExitCharacter(Dictionary<string, object> data)
     {
-        if (!characterWaiting)
+        Debug.Log("goToHell :" + (bool)data["goToHell"]);
+        character[currentChar].Exits((bool)data["goToHell"]);
+        ++currentChar;
+
+        if (currentChar >= character.Length)
+        {
+            currentChar = 0;
+            EventManager.TriggerEvent(GameEvent.LastCharacter, new Dictionary<string, object> { });
+            lastPassed = true;
+        }
+        if (clickableID != null) 
+        { 
+            clickableID.SetActive(false); 
+        }
+    }
+
+    public void NextCharacter(Dictionary<string, object> data)
+    {
+        Debug.Log("switch character");
+        if (!characterWaiting || lastPassed)
         {
             return;
         }
-        if (isCharacterPresent)
-        {
-            //Debug.Log("goToHell :" + (bool)data["goToHell"]);
-            character[currentChar].Exits((bool)data["goToHell"]);
-            ++currentChar;
+        //Debug.Log("switch character");
+        character[currentChar].Enters(spawnPoint, spawner);
 
-            if (currentChar >= character.Length)
-            {
-                currentChar = 0;
-                EventManager.TriggerEvent(GameEvent.LastCharacter, new Dictionary<string, object> { });
-            }
-        }
-        else
-        {
-            //Debug.Log("switch character");
-            character[currentChar].Enters(spawnPoint, spawner);
-        }
         isCharacterPresent = !isCharacterPresent;
 
         if (clickableID != null)
         {
-            clickableID.SetActive(isCharacterPresent);
+            clickableID.SetActive(true);
             id.id = character[currentChar].id;
         }
         characterWaiting = false;

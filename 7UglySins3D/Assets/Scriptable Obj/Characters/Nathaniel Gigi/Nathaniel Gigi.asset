@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Nathaniel Gigi
   m_EditorClassIdentifier: Assembly-CSharp::Character
   id: {fileID: 11400000, guid: 34041635a0b34c34daefb668eb6d38ca, type: 2}
-  model: {fileID: 5315951306953163905, guid: bff5abdf2141dd14bb816f508352f8cf, type: 3}
+  model: {fileID: 7254849558151816414, guid: 575f66e8ac72e9a47bb93b4f7442f5c8, type: 3}
