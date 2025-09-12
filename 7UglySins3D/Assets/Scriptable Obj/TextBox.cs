@@ -2,9 +2,6 @@ using TMPro;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
-using UnityEditor.Timeline.Actions;
-using Unity.VisualScripting;
-using NUnit.Framework;
 
 [CreateAssetMenu(fileName = "TextDisplay", menuName = "Scriptable Objects/TextDisplay")]
 public class TextBox : ScriptableObject

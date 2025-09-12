@@ -22,7 +22,9 @@ MonoBehaviour:
   allowedArea: {fileID: 0}
   autoFindPlayAreaByTag: 1
   playAreaTag: PlayArea
-  innerPadding: 0.1
+  innerPadding: 0.01
   draggableMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  hideCursorWhileDragging: 1
+  confineCursorWhileDragging: 1

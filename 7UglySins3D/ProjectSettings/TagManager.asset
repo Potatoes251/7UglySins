@@ -9,6 +9,10 @@ TagManager:
   - Weight
   - Button
   - Ground
+  - Stamp
+  - StampArea
+  - table
+  - scale
   layers:
   - Default
   - TransparentFX

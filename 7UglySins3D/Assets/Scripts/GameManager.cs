@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public enum GameState
 {
@@ -10,6 +11,7 @@ public enum GameState
     Running,
 }
 
+[Serializable]
 public struct GameData
 {
     public int obedience;
@@ -25,7 +27,9 @@ public class GameManager : MonoBehaviour
     [Header("State Tracking")]
     [SerializeField] private GameState game_state = GameState.Entry;
 
-    private GameData gameData;
+    [SerializeField] private GameData gameData;
+
+    [SerializeField] private List<AudioClip> musics;
 
     [SerializeField]
     private int obedienceEndingThreshold = 5;
@@ -123,6 +127,14 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Start:
                 //Debug.Log("starting from entry");
+
+                var payload = new Dictionary<string, object> {
+    { "clip", musics[0] },
+    { "fade", 1.2f },               // seconds (optional)
+    { "volume", 0.9f },             // optional
+    { "loop", true }                // optional, default true
+};
+                EventManager.TriggerEvent(GameEvent.PlayMusic, payload);
                 EventManager.TriggerEvent(GameEvent.NewCharacter, new Dictionary<string, object> { });
                 break;
 

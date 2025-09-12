@@ -149,6 +149,9 @@ MonoBehaviour:
   isSinful: 0
   isMoral: 0
   manager: {fileID: 0}
+  clip:
+  - {fileID: 8300000, guid: 1debe615f7e1b3f40b1961de257d39c7, type: 3}
+  - {fileID: 8300000, guid: 271f8a50edd41794dbd031ae3cdf2953, type: 3}
 --- !u!1001 &1043004809154974289
 PrefabInstance:
   m_ObjectHideFlags: 0
