@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharID
   CharName: Kyle Remins
   gender: Male
-  causeOfDeath: Guitar Voltage Mishap
+  causeOfDeath: 'Electrocution '
   occupation: Guitarist
   definingMoments:
   - text: Hijacking live TV

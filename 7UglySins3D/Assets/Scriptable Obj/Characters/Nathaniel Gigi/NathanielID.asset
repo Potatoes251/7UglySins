@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharID
   CharName: Nathaniel Gigi
   gender: Male
-  causeOfDeath: 32 Cranial Bullet Wounds
+  causeOfDeath: 32 Bullet Wounds
   occupation: '"Pro Gamer"'
   definingMoments:
   - text: Unironic Usage of "Skibidi"
