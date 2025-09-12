@@ -21,17 +21,24 @@ public class CharacterManager : MonoBehaviour
     [SerializeField]
     private Transform spawnPoint;
 
+    private bool characterWaiting = false;
+
     private void OnEnable()
     {
-        EventManager.StartListening(GameEvent.NewCharacter, SwitchCharacter);
+        EventManager.StartListening(GameEvent.NewCharacter, NewCharacter);
+        EventManager.StartListening(GameEvent.EndText, SwitchCharacter);
         EventManager.StartListening(GameEvent.Sentencing, SwitchCharacter);
     }
 
     public void SwitchCharacter(Dictionary<string, object> data)
     {
+        if (!characterWaiting)
+        {
+            return;
+        }
         if (isCharacterPresent)
         {
-            Debug.Log("goToHell :" + (bool)data["goToHell"]);
+            //Debug.Log("goToHell :" + (bool)data["goToHell"]);
             character[currentChar].Exits((bool)data["goToHell"]);
             ++currentChar;
 
@@ -43,6 +50,7 @@ public class CharacterManager : MonoBehaviour
         }
         else
         {
+            //Debug.Log("switch character");
             character[currentChar].Enters(spawnPoint, spawner);
         }
         isCharacterPresent = !isCharacterPresent;
@@ -52,5 +60,11 @@ public class CharacterManager : MonoBehaviour
             clickableID.SetActive(isCharacterPresent);
             id.id = character[currentChar].id;
         }
+        characterWaiting = false;
+    }
+
+    public void NewCharacter(Dictionary<string, object> data)
+    {
+        characterWaiting = true;
     }
 }

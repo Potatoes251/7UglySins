@@ -23,13 +23,13 @@ public class Button : MonoBehaviour
     {
         Vector2 mousePos = Mouse.current.position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
-        Debug.Log("Clicking");
+        //Debug.Log("Clicking");
         if (Physics.Raycast(ray, out RaycastHit hit)) // 3D version
         {
-            Debug.Log(hit.collider);
+            //Debug.Log(hit.collider);
             if (hit.collider.CompareTag("Button"))
             {
-                Debug.Log("tag");
+                //Debug.Log("tag");
                 EventManager.TriggerEvent(GameEvent.GoNext, new Dictionary<string, object> { });
             }
         }
