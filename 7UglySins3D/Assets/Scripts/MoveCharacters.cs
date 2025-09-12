@@ -12,6 +12,7 @@ public class MoveCharacters : MonoBehaviour
 
     private IEnumerator MoveAndDestroy(Vector3 endPoint, float duration)
     {
+        EventManager.TriggerEvent(GameEvent.NewCharacter, new Dictionary<string, object> { });
         Vector3 start = transform.position;
         float time = 0f;
 
@@ -24,6 +25,5 @@ public class MoveCharacters : MonoBehaviour
 
         transform.position = endPoint;
         Destroy(gameObject);
-        EventManager.TriggerEvent(GameEvent.NewCharacter, new Dictionary<string, object> { });
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public enum GameState
 {
@@ -10,6 +11,7 @@ public enum GameState
     Running,
 }
 
+[Serializable]
 public struct GameData
 {
     public int obedience;
@@ -25,10 +27,19 @@ public class GameManager : MonoBehaviour
     [Header("State Tracking")]
     [SerializeField] private GameState game_state = GameState.Entry;
 
-    private GameData gameData;
+    [SerializeField] private GameData gameData;
+
+    [SerializeField] private List<AudioClip> musics;
 
     [SerializeField]
     private int obedienceEndingThreshold = 5;
+
+    private bool ended = false;
+
+    [SerializeField]
+    private GameObject BaseScreen;
+    [SerializeField]
+    private GameObject BossScreen;
 
     private void Awake()
     {
@@ -51,6 +62,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         MainLoop();
     }
 
@@ -123,6 +138,14 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Start:
                 //Debug.Log("starting from entry");
+
+                var payload = new Dictionary<string, object> {
+    { "clip", musics[0] },
+    { "fade", 1.2f },               // seconds (optional)
+    { "volume", 0.9f },             // optional
+    { "loop", true }                // optional, default true
+};
+                EventManager.TriggerEvent(GameEvent.PlayMusic, payload);
                 EventManager.TriggerEvent(GameEvent.NewCharacter, new Dictionary<string, object> { });
                 break;
 
@@ -142,12 +165,15 @@ public class GameManager : MonoBehaviour
         //Debug.Log("GameManager Enabled");
         EventManager.StartListening(GameEvent.ClickedStart, GameStart);
         EventManager.StartListening(GameEvent.Sentencing, Sentencing);
-        EventManager.StartListening(GameEvent.LastCharacter, PickEnding);
+        EventManager.StartListening(GameEvent.LastCharacter, StartEnding);
+        EventManager.StartListening(GameEvent.EndText, PickEnding);
     }
 
     private void OnDisable()
     {
         EventManager.StopListening(GameEvent.ClickedStart, GameStart);
+        EventManager.StopListening(GameEvent.ClickedStart, SetBossScreen);
+        EventManager.StopListening(GameEvent.EndText, SetBaseScreen);
     }
 
     private void GameStart(Dictionary<string, object> data)
@@ -157,6 +183,19 @@ public class GameManager : MonoBehaviour
         //Debug.Log("GameManager Function Triggered");
         //if (data.ContainsKey("message"))
             //Debug.Log((string)data["message"]);
+    }
+
+    private void SetBossScreen(Dictionary<string, object> data)
+    {
+        Debug.Log("here");
+        BaseScreen.SetActive(false);
+        BossScreen.SetActive(true);
+    }
+    
+    private void SetBaseScreen(Dictionary<string, object> data)
+    {
+        BaseScreen.SetActive(true);
+        BossScreen.SetActive(false);
     }
 
     private void Sentencing(Dictionary<string, object> data)
@@ -170,8 +209,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void StartEnding(Dictionary<string, object> data)
+    {
+        ended = true;
+    }
+
     private void PickEnding(Dictionary<string, object> data) 
     {
+        if (!ended)
+        {
+            return;
+        }
+        Debug.Log("here");
         //Debug.Log("obedience" + gameData.obedience);
         //Debug.Log("morality" + gameData.morality);
         if (gameData.obedience > obedienceEndingThreshold)

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbfc7ea5df56c44bb1a9604011bea66, type: 3}
   m_Name: Ending 3
   m_EditorClassIdentifier: Assembly-CSharp::Dialog
-  dialogName: 
+  dialogName: obedience
   boxes:
   - {fileID: 11400000, guid: 088a0078d1136594eacf3e2a4f72d4e1, type: 2}
   - {fileID: 11400000, guid: a9a185c9b5f53894d8f87608904b18c8, type: 2}

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Victor Rious
   m_EditorClassIdentifier: Assembly-CSharp::Character
   id: {fileID: 11400000, guid: 530ceb0b5fed68547918a08fb3b97308, type: 2}
-  model: {fileID: 4110777035392593135, guid: b616f42f3befb174d9499169e4cef212, type: 3}
+  model: {fileID: 283485946035380556, guid: 92405a712c7ea0144bedc205aa86fdb2, type: 3}

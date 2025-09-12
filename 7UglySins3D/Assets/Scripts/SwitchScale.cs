@@ -10,7 +10,7 @@ public class SwitchScale : MonoBehaviour
     [SerializeField]
     private GameObject rightScale;
 
-    private float delay = .1f;
+    private float delay = .2f;
     private float timeLeft = 0f;
 
     private bool switched = false;

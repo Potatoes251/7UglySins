@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b03431a06a851d42a5dd2638862bcaf, type: 3}
   m_Name: DraggableParams
   m_EditorClassIdentifier: Assembly-CSharp::DraggableParams
-  liftHeight: 0.2
+  liftHeight: 0.35
   keepLiftOnRelease: 1
   makeKinematicWhileDragging: 1
   dropToGroundOnRelease: 1
@@ -22,7 +22,9 @@ MonoBehaviour:
   allowedArea: {fileID: 0}
   autoFindPlayAreaByTag: 1
   playAreaTag: PlayArea
-  innerPadding: 0.1
+  innerPadding: 0.01
   draggableMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  hideCursorWhileDragging: 1
+  confineCursorWhileDragging: 1
