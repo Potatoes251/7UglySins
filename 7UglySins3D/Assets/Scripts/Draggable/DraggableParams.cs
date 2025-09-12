@@ -22,4 +22,6 @@ public class DraggableParams : ScriptableObject
 
     [Header("Picking")]
     public LayerMask draggableMask = ~0;
+    public bool hideCursorWhileDragging = true;
+    public bool confineCursorWhileDragging = true;
 }

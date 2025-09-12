@@ -20,7 +20,7 @@ public struct GameData
 public class GameManager : MonoBehaviour
 {
     // Singleton Instance
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instance { get; private set; } 
 
     [Header("State Tracking")]
     [SerializeField] private GameState game_state = GameState.Entry;
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Init();
+       
     }
 
     private void Update()
