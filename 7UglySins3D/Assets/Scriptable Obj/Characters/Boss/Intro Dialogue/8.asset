@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
+  m_Name: 8
+  m_EditorClassIdentifier: Assembly-CSharp::TextBox
+  textToDisplay: 'With that said, get to work, and don''t dissapoint me and do remember,
+    we''re always watching...
+
+
+'
+  speed: 0.05
+  nextBox:
+    m_Name: NextBox
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 2d5b66b7-4f00-42bb-8419-c804af752d76
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 29fa3540-cfc5-4771-9891-8c5c7e1281ca
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    - m_Name: 
+      m_Id: f20ed43d-b50d-43a7-9199-96a0113d1e28
+      m_Path: <Keyboard>/enter
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: NextBox
+      m_Flags: 0
+    m_Flags: 0
