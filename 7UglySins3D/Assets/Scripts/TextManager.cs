@@ -7,7 +7,6 @@ public class TextManager : MonoBehaviour
 {
     public Dialog[] dialogs;
     public TMP_Text uiText;
-    public Image image;
 
     static public TextManager instance;
 

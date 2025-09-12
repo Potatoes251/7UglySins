@@ -167,6 +167,8 @@ public class GameManager : MonoBehaviour
         EventManager.StartListening(GameEvent.Sentencing, Sentencing);
         EventManager.StartListening(GameEvent.LastCharacter, StartEnding);
         EventManager.StartListening(GameEvent.EndText, PickEnding);
+        EventManager.StartListening(GameEvent.ClickedStart, SetBossScreen);
+        EventManager.StartListening(GameEvent.EndText, SetBaseScreen);
     }
 
     private void OnDisable()
