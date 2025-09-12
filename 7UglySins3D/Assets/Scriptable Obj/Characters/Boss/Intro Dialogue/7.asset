@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbecc53f75edd44aaeea3509f9c0313, type: 3}
   m_Name: 7
   m_EditorClassIdentifier: Assembly-CSharp::TextBox
-  textToDisplay: 'All you need to do is stamp the right afterlife on their papers.
-    You can do that much, can''t you?
+  textToDisplay: 'With that said, get to work, and don''t dissapoint me and do remember,
+    we''re always watching...
+
 
 '
   speed: 0.05
@@ -21,12 +22,12 @@ MonoBehaviour:
     m_Name: NextBox
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: 9c4813ae-0f5a-44f9-bf12-099abe09be05
+    m_Id: 2d5b66b7-4f00-42bb-8419-c804af752d76
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 691ffc87-7a6f-4bbf-a08f-7c2df54e4ab5
+      m_Id: 29fa3540-cfc5-4771-9891-8c5c7e1281ca
       m_Path: <Keyboard>/space
       m_Interactions: 
       m_Processors: 
@@ -34,7 +35,7 @@ MonoBehaviour:
       m_Action: NextBox
       m_Flags: 0
     - m_Name: 
-      m_Id: bae6018d-181d-4c24-b647-875416bc455a
+      m_Id: f20ed43d-b50d-43a7-9199-96a0113d1e28
       m_Path: <Keyboard>/enter
       m_Interactions: 
       m_Processors: 
