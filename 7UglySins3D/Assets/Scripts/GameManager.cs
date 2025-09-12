@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
     private int obedienceEndingThreshold = 5;
 
     private bool ended = false;
+    private bool canRestart = false;
 
     [SerializeField]
     private GameObject BaseScreen;
@@ -169,6 +172,7 @@ public class GameManager : MonoBehaviour
         EventManager.StartListening(GameEvent.EndText, PickEnding);
         EventManager.StartListening(GameEvent.ClickedStart, SetBossScreen);
         EventManager.StartListening(GameEvent.EndText, SetBaseScreen);
+        EventManager.StartListening(GameEvent.EndText, Restart);
     }
 
     private void OnDisable()
@@ -222,6 +226,8 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        ended = false;
+        canRestart = true;
         Debug.Log("here");
         //Debug.Log("obedience" + gameData.obedience);
         //Debug.Log("morality" + gameData.morality);
@@ -245,6 +251,15 @@ public class GameManager : MonoBehaviour
             EventManager.TriggerEvent(GameEvent.Ending, new Dictionary<string, object> { { "Ending", "immoral" } });
             return;
         }
+    }
 
+
+    private void Restart(Dictionary<string, object> data)
+    {
+        if (!canRestart)
+        {
+            return;
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

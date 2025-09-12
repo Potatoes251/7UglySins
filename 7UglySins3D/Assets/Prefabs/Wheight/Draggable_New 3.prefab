@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableController
   visual: {fileID: 11400000, guid: 0e276cc94577c2748891c789ac424165, type: 2}
-  parameters: {fileID: 11400000, guid: fcb8b99f88c898e4f8cbbc8a8c9e8c1f, type: 2}
+  parameters: {fileID: 11400000, guid: 9e0d596cddcc66342b6c8f718c166266, type: 2}
   visualRoot: {fileID: 9072880220786584331}
   meshCollider: {fileID: 4267037590660838712}
 --- !u!114 &8240281246654500690

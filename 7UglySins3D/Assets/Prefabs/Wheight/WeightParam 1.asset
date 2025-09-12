@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b03431a06a851d42a5dd2638862bcaf, type: 3}
   m_Name: WeightParam 1
   m_EditorClassIdentifier: Assembly-CSharp::DraggableParams
-  liftHeight: 0.35
+  liftHeight: 0.25
   keepLiftOnRelease: 1
   makeKinematicWhileDragging: 1
-  dropToGroundOnRelease: 0
+  dropToGroundOnRelease: 1
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
