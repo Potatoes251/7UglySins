@@ -2,9 +2,6 @@ using TMPro;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
-using UnityEditor.Timeline.Actions;
-using Unity.VisualScripting;
-using NUnit.Framework;
 
 [CreateAssetMenu(fileName = "TextDisplay", menuName = "Scriptable Objects/TextDisplay")]
 public class TextBox : ScriptableObject
@@ -44,6 +41,10 @@ public class TextBox : ScriptableObject
         continu = false;
         if (currentText != string.Empty) currentText = string.Empty;
 
+        if (textToDisplay == null || textToDisplay == string.Empty)
+        {
+            Debug.LogWarning("missing text in text box : " + name);
+        }
         for (int i = 0; i < textToDisplay.Length; i++)
         {
             currentText += textToDisplay[i];

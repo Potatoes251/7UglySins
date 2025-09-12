@@ -19,16 +19,20 @@ public class Scale : MonoBehaviour
         EventManager.StartListening(GameEvent.GoNext, Evaluate);
     }
 
+    void OnDisable()
+    {
+        EventManager.StopListening(GameEvent.GoNext, Evaluate);
+    }
+
     private void Evaluate(Dictionary<string, object> data)
     {
-        //Debug.Log("evaluate");
+        Debug.Log("evaluate");
         WeightData hellData = hell.GetWeightData();
         WeightData heavenData = heaven.GetWeightData();
 
         if (hellData.count + heavenData.count < 5)
         {
             EventManager.TriggerEvent(GameEvent.MissingWeight, new Dictionary<string, object> { });
-            
             //Debug.LogWarning("wheight(s) missing on the scale only " + (hellData.count + heavenData.count) + " present");
             return;
         }
@@ -60,6 +64,7 @@ public class Scale : MonoBehaviour
                 morality = heavenData.weight[i].isMoral ? ++morality : --morality;
             }
         }
+        Debug.Log("sentencing");
         EventManager.TriggerEvent(GameEvent.Sentencing, new Dictionary<string, object> { 
             {"obedience", obedience },{ "morality", morality }, { "goToHell", goToHell } });
 

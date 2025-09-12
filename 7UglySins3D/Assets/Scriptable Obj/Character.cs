@@ -22,9 +22,13 @@ public class Character : ScriptableObject
             spawnedObject = Instantiate(model, spawnPoint);
             id.dialogs[0].DisplayDialog();
         }
+        else
+        {
+            Debug.LogWarning("model missing in " + name);
+        }
     }
 
-    public void Exits(bool goToHell = true)
+    public void Exits(bool goToHell)
     {
         if (spawnedObject != null)
         {
