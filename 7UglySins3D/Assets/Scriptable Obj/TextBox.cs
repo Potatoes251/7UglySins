@@ -2,6 +2,8 @@ using TMPro;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "TextDisplay", menuName = "Scriptable Objects/TextDisplay")]
 public class TextBox : ScriptableObject
@@ -36,8 +38,16 @@ public class TextBox : ScriptableObject
         nextBox.Disable();
     }
 
-    public IEnumerator DisplayText(TMP_Text uiText, Dialog dialog, int index = 0)
+    public IEnumerator DisplayText(TMP_Text uiText, Dialog dialog, AudioClip clip, CharID id, Image image, int index = 0)
     {
+        var payload = new Dictionary<string, object> {
+    { "clip", clip },
+    { "fade", 1.2f },               // seconds (optional)
+    { "volume", 0.9f },             // optional
+    { "loop", true }                // optional, default true
+};
+        image.gameObject.SetActive(true);
+        EventManager.TriggerEvent(GameEvent.PlaySfx, payload);
         continu = false;
         if (currentText != string.Empty) currentText = string.Empty;
 
@@ -57,11 +67,17 @@ public class TextBox : ScriptableObject
         }
         uiText.text = textToDisplay;
         continu = false;
+        EventManager.TriggerEvent(GameEvent.StopAllSfx, new Dictionary<string, object> { });
         if (dialog != null)
         {
             yield return new WaitUntil(() => continu );
+            image.gameObject.SetActive(false);
             continu = false;
-            dialog.DisplayDialog(++index);
+            dialog.DisplayDialog(id, ++index);
+        }
+        else
+        {
+            image.gameObject.SetActive(false);
         }
     }
 

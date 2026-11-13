@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Character", menuName = "Scriptable Objects/Character")]
 public class Character : ScriptableObject
@@ -20,7 +23,7 @@ public class Character : ScriptableObject
                 spawner.SpawnWheight(id);
             }
             spawnedObject = Instantiate(model, spawnPoint);
-            id.dialogs[0].DisplayDialog();
+            id.dialogs[0].DisplayDialog(id);
         }
         else
         {
@@ -43,12 +46,12 @@ public class Character : ScriptableObject
 
             if (goToHell)
             {
-                id.dialogs[2].DisplayDialog();
+                id.dialogs[2].DisplayDialog(id);
                 end = start + 3.5f * Vector3.forward;
             }
             else
             {
-                id.dialogs[1].DisplayDialog();
+                id.dialogs[1].DisplayDialog(id);
                 end = start + 3.5f * Vector3.back;
             }
             if (spawnedObject.GetComponent<MoveCharacters>() == null)

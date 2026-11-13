@@ -10,14 +10,14 @@ public class Dialog : ScriptableObject
 
     public float delay = 0.05f;
 
-    public void DisplayDialog(int index = 0)
+    public void DisplayDialog(CharID id = null, int index = 0)
     {
         //Debug.Log("display dialog");
         if (index < boxes.Length)
         {
             //Debug.Log("inside display dialog");
             EventManager.TriggerEvent(GameEvent.StartText, new Dictionary<string, object> { });
-            TextManager.instance.DisplayTexts(boxes[index], index, this);
+            TextManager.instance.DisplayTexts(boxes[index], id, index, this);
         }
         else
         {
@@ -25,13 +25,13 @@ public class Dialog : ScriptableObject
         }
     }
 
-    public void DisplayDialog(bool message, int index = 0)
+    public void DisplayDialog(bool message, CharID id, int index = 0)
     {
         if (index < boxes.Length)
         {
             EventManager.TriggerEvent(GameEvent.StartText, new Dictionary<string, object> { });
             EventManager.TriggerEvent(GameEvent.NewCharacter, new Dictionary<string, object> { });
-            TextManager.instance.DisplayTexts(boxes[index], index, this);
+            TextManager.instance.DisplayTexts(boxes[index], id, index, this);
         }
         else
         {

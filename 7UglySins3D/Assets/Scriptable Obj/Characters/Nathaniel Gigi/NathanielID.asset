@@ -36,3 +36,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ee5cd883cf7c62b4fa30cf1be7daf3bd, type: 2}
   - {fileID: 11400000, guid: ed539565c9b63f2469fcb9bda1dcd35b, type: 2}
   - {fileID: 11400000, guid: 74178bf4007bb6f40b901d2de8e39bfb, type: 2}
+  background: {fileID: 21300000, guid: 75c9ab8ab5f4f114da20aab3aa76095f, type: 3}

@@ -19,4 +19,6 @@ public class CharID : ScriptableObject
     public Moments[] definingMoments;
 
     public Dialog[] dialogs;
+
+    public Sprite background;
 }

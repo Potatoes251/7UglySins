@@ -10,6 +10,15 @@ public class TextManager : MonoBehaviour
 
     static public TextManager instance;
 
+    [SerializeField]
+    private AudioClip clip;
+
+    [SerializeField]
+    private Image image;
+
+    [SerializeField]
+    private Sprite defaultBack;
+
     private bool isDialogPlaying = false;
     void Start()
     {
@@ -41,11 +50,23 @@ public class TextManager : MonoBehaviour
         StartDialogs((string)data["Ending"]);
     }
 
-    public void DisplayTexts(TextBox text, int index = 0, Dialog dialog = null)
+    public void DisplayTexts(TextBox text, CharID id, int index = 0, Dialog dialog = null)
     {
+        Debug.Log(id);
+        if (image != null && id != null && id.background != null)
+        {
+            Debug.Log(id.name);
+            image.gameObject.SetActive(true);
+            image.sprite = id.background;
+        }
+        else
+        {
+            image.gameObject.SetActive(true);
+            image.sprite = defaultBack;
+        }
         //Debug.Log(index);
         uiText.gameObject.SetActive(true);
-        StartCoroutine(text.DisplayText(uiText, dialog, index));
+        StartCoroutine(text.DisplayText(uiText, dialog, clip, id, image, index));
     }
 
     public void StartDialogs(string name)

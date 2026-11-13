@@ -40,8 +40,6 @@ public class GameManager : MonoBehaviour
     private bool canRestart = false;
 
     [SerializeField]
-    private GameObject BaseScreen;
-    [SerializeField]
     private GameObject BossScreen;
 
     private void Awake()
@@ -193,14 +191,11 @@ public class GameManager : MonoBehaviour
 
     private void SetBossScreen(Dictionary<string, object> data)
     {
-        Debug.Log("here");
-        BaseScreen.SetActive(false);
         BossScreen.SetActive(true);
     }
     
     private void SetBaseScreen(Dictionary<string, object> data)
     {
-        BaseScreen.SetActive(true);
         BossScreen.SetActive(false);
     }
 
@@ -227,39 +222,35 @@ public class GameManager : MonoBehaviour
             return;
         }
         ended = false;
-        canRestart = true;
         Debug.Log("here");
         //Debug.Log("obedience" + gameData.obedience);
         //Debug.Log("morality" + gameData.morality);
         if (gameData.obedience > obedienceEndingThreshold)
         {
             EventManager.TriggerEvent(GameEvent.Ending, new Dictionary<string, object> { { "Ending", "obedience" } });
-            return;
         }
         else if (gameData.obedience < -obedienceEndingThreshold)
         {
             EventManager.TriggerEvent(GameEvent.Ending, new Dictionary<string, object> { { "Ending", "disobedience" } });
-            return;
         }
         else if (gameData.morality < 0)
         {
             EventManager.TriggerEvent(GameEvent.Ending, new Dictionary<string, object> { { "Ending", "moral" } });
-            return;
         }
         else
         {
             EventManager.TriggerEvent(GameEvent.Ending, new Dictionary<string, object> { { "Ending", "immoral" } });
-            return;
         }
+        //canRestart = true;
     }
 
 
     private void Restart(Dictionary<string, object> data)
     {
-        if (!canRestart)
+/*        if (!canRestart)
         {
             return;
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);*/
     }
 }

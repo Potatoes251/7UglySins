@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharID
   CharName: Derick Daemons
   gender: Male
-  causeOfDeath: Critically Failed Breathing
+  causeOfDeath: Failed Breathing
   occupation: Unemployed
   definingMoments:
   - text: Usage of Rigged Dice
@@ -36,3 +36,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7ae4eecb92cbf3143bb687fabccd0691, type: 2}
   - {fileID: 11400000, guid: 69ec61f9d7d00b9438583da5d0a1e434, type: 2}
   - {fileID: 11400000, guid: 6add688c6029bd54d8347cb095e6b15d, type: 2}
+  background: {fileID: 21300000, guid: 79d0840ec2a22ff47b96813b42c19ad1, type: 3}
