@@ -15,14 +15,14 @@ Each soul comes with a **folder** containing a short description of the person a
 
 But remember: your boss has his own opinion on who deserves what. Will you follow orders, or make your own judgment?
 
----
-
 ## Screenshots
 
-<!-- Add a few screenshots -->
-<!-- ![Screenshot 1](docs/screenshot1.png) -->
+*Your first day on the job: Satan briefs you on your new role as judge of souls.*
+![Meeting the boss](ScreenshotBoss.png)
 
----
+*A soul arrives at your desk. Read their folder, weigh each feat on the balance, and decide where they go.*
+![Judging a soul](ScreenshotCharacter.png)
+
 
 ## How to Play
 
@@ -40,7 +40,6 @@ But remember: your boss has his own opinion on who deserves what. Will you follo
 
 At the end of your shift, you have a final conversation with your boss. The dialogue changes depending on whether you **obeyed Satan's expectations** or **followed your own judgment**.
 
----
 
 ## Features
 
@@ -51,7 +50,6 @@ At the end of your shift, you have a final conversation with your boss. The dial
 - Branching final dialogue based on your obedience
 - Hand-crafted art and characters
 
----
 
 ##  Built With
 
@@ -59,7 +57,6 @@ At the end of your shift, you have a final conversation with your boss. The dial
 - **Language:** C#
 - **Platform:** `Windows`
 
----
 
 ## Getting Started
 
