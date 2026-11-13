@@ -29,7 +29,7 @@ But remember: your boss has his own opinion on who deserves what. Will you follo
 1. A soul arrives and says a few words.
 2. Open their **folder** to read their description and their **5 feats**.
 3. Each feat is **color-coded** and can be judged **individually**.
-4. Move the **weights** onto the **balance** (Heaven on one side, Hell on the other) for each feat.
+4. Move the **weights** onto the **balance** (Heaven on the right, Hell on the left) for each feat.
 5. Once you're done, the soul goes where the balance tips:
    - More weight on **Heaven** → the soul ascends 
    - More weight on **Hell** → the soul descends 
